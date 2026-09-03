@@ -1,0 +1,460 @@
+.post-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--nav-bg);
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid var(--border);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-btn);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    color: white;
+}
+
+.post-author {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.post-time {
+    font-size: 0.8em;
+    color: var(--text-muted);
+}
+
+.post-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 20px 0;
+    color: var(--text-main);
+}
+
+.post-image {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+.post-video {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+.post-stats {
+    display: flex;
+    gap: 20px;
+    padding: 15px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+    color: var(--text-muted);
+}
+
+.like-btn {
+    cursor: pointer;
+}
+
+.like-btn.liked {
+    color: #ff4757;
+}
+
+.comments-section h3 {
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.comment {
+    background: var(--hover-bg);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.comment-author {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-main);
+}
+
+.comment-time {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    margin-left: 10px;
+}
+
+.comment-text {
+    color: var(--text-main);
+    margin-top: 8px;
+}
+
+.add-comment {
+    margin-top: 25px;
+}
+
+.add-comment textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--hover-bg);
+    color: var(--text-main);
+    resize: vertical;
+    margin-bottom: 10px;
+    font-family: inherit;
+}
+
+.empty-comments {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    background: var(--hover-bg);
+    border-radius: 12px;
+}
+.reply-btn {
+    background: none;
+    border: none;
+    color: var(--primary-btn);
+    cursor: pointer;
+    font-size: 0.75em;
+    margin-left: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.reply-btn:hover {
+    background: var(--hover-bg);
+}
+
+.reply {
+    margin-left: 30px;
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--nav-bg);
+    border-radius: 10px;
+    border-left: 3px solid var(--primary-btn);
+}
+
+.reply-header {
+    margin-bottom: 5px;
+}
+
+.reply-author {
+    font-weight: 600;
+    font-size: 0.85em;
+    color: var(--text-main);
+}
+
+.reply-time {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    margin-left: 8px;
+}
+
+.reply-text {
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+.reply-form {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.reply-form textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--hover-bg);
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+/* Add to existing post.css */
+
+/* Reply Styles */
+.reply-btn {
+    background: none;
+    border: none;
+    color: var(--primary-btn);
+    cursor: pointer;
+    font-size: 0.7em;
+    margin-left: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.reply-btn:hover {
+    background: var(--hover-bg);
+}
+
+.reply {
+    margin-left: 30px;
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--nav-bg);
+    border-radius: 10px;
+    border-left: 3px solid var(--primary-btn);
+}
+
+.reply-header {
+    margin-bottom: 5px;
+}
+
+.reply-author {
+    font-weight: 600;
+    font-size: 0.85em;
+    color: var(--text-main);
+}
+
+.reply-time {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    margin-left: 8px;
+}
+
+.reply-text {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.reply-form {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.reply-form textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--hover-bg);
+    color: var(--text-main);
+    margin-bottom: 8px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+/* Report Modal */
+.report-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--nav-bg);
+    border-radius: 16px;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px;
+    z-index: 1002;
+    border: 1px solid var(--border);
+    display: none;
+}
+
+.report-modal.active {
+    display: block;
+    animation: zoomIn 0.2s ease;
+}
+
+.report-modal h3 {
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.report-reason {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--hover-bg);
+    color: var(--text-main);
+    margin: 15px 0;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.report-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: none;
+}
+
+.modal-overlay.active {
+    display: block;
+}
+
+/* Report button in post menu */
+.report-post-btn {
+    color: #ffa500;
+}
+
+.report-post-btn:hover {
+    background: rgba(255, 165, 0, 0.1);
+}
+
+/* Add to existing post.css */
+
+/* Report Modal */
+.report-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--nav-bg);
+    border-radius: 16px;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px;
+    z-index: 1002;
+    border: 1px solid var(--border);
+    display: none;
+}
+
+.report-modal.active {
+    display: block;
+    animation: zoomIn 0.2s ease;
+}
+
+.report-modal h3 {
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.report-reason {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--hover-bg);
+    color: var(--text-main);
+    margin: 15px 0;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.report-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: none;
+}
+
+.modal-overlay.active {
+    display: block;
+}
+
+/* Report button in post menu */
+.report-post-btn {
+    color: #ffa500;
+}
+
+.report-post-btn:hover {
+    background: rgba(255, 165, 0, 0.1);
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* Add to existing post.css */
+
+/* Nested Thread Replies */
+.thread-reply {
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--nav-bg);
+    border-radius: 10px;
+    border-left: 3px solid var(--primary-btn);
+}
+
+.reply-to-reply-btn {
+    background: none;
+    border: none;
+    color: var(--primary-btn);
+    cursor: pointer;
+    font-size: 0.7em;
+    margin-left: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.reply-to-reply-btn:hover {
+    background: var(--hover-bg);
+}
+
+.reply-to-reply-form {
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--hover-bg);
+    border-radius: 8px;
+}
+
+.reply-to-reply-form textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--nav-bg);
+    color: var(--text-main);
+    margin-bottom: 8px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.reply-to-reply-form .btn-primary,
+.reply-to-reply-form .btn-media {
+    margin-right: 8px;
+    padding: 5px 12px;
+    font-size: 0.8em;
+}
+
+.nested-replies {
+    margin-top: 5px;
+}

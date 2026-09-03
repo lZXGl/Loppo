@@ -1,0 +1,258 @@
+.explore-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.explore-header {
+    margin-bottom: 20px;
+}
+
+.explore-header h1 {
+    font-size: 1.8em;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.explore-header p {
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+.explore-search {
+    margin-bottom: 20px;
+}
+
+.explore-search input {
+    width: 100%;
+    padding: 12px 18px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    background: var(--hover-bg);
+    color: var(--text-main);
+    font-size: 0.95em;
+}
+
+.user-card {
+    background: var(--nav-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.user-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.user-info h3 {
+    margin-bottom: 5px;
+    color: var(--text-main);
+}
+
+.user-info p {
+    color: var(--text-muted);
+    font-size: 0.85em;
+    margin-bottom: 8px;
+}
+
+.user-stats {
+    display: flex;
+    gap: 15px;
+    font-size: 0.75em;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+}
+
+.user-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-follow {
+    background: var(--primary-btn);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-follow:hover {
+    transform: scale(1.05);
+}
+
+.btn-follow.following {
+    background: var(--hover-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+}
+
+.btn-report {
+    background: #ffa500;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.75em;
+    transition: all 0.2s;
+}
+
+.btn-report:hover {
+    background: #ff8c00;
+    transform: scale(1.02);
+}
+
+.btn-block {
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.75em;
+    transition: all 0.2s;
+}
+
+.btn-block:hover {
+    background: #e84118;
+    transform: scale(1.02);
+}
+
+.btn-danger {
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background: #e84118;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-muted);
+    background: var(--nav-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+/* Report and Block Modals */
+.report-modal, .block-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--nav-bg);
+    border-radius: 16px;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px;
+    z-index: 1002;
+    border: 1px solid var(--border);
+    display: none;
+}
+
+.report-modal.active, .block-modal.active {
+    display: block;
+    animation: zoomIn 0.2s ease;
+}
+
+.report-modal h3, .block-modal h3 {
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.report-reason {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--hover-bg);
+    color: var(--text-main);
+    margin: 15px 0;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.report-buttons, .block-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: none;
+}
+
+.modal-overlay.active {
+    display: block;
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.sidebar h3 {
+    margin-bottom: 15px;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-list li {
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-main);
+}
+
+.sidebar-list li:hover {
+    background: var(--hover-bg);
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .user-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    .user-stats {
+        justify-content: center;
+    }
+    .user-actions {
+        justify-content: center;
+    }
+}

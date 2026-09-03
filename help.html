@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/help.css">
+</head>
+<body>
+
+<nav>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
+    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
+    <div class="nav-actions">
+        <button class="btn-lang" id="langBtn">العربية</button>
+        <div onclick="location.href='notifications.html'" style="cursor:pointer;font-size:1.2em;" title="Notifications"></div>
+        <button class="btn-primary" onclick="location.href='login.html'" id="loginBtn">Log In</button>
+        <div id="user-avatar" style="cursor:pointer;display:none;" onclick="location.href='profile.html'">
+            <img id="nav-avatar" src="" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+        <aside class="sidebar-loppo">
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('mainMenu')">
+                <span class="section-title">MAIN</span>
+                <span class="collapse-icon" id="mainMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="mainMenu">
+                <a href="index.html" class="sidebar-link">Home</a>
+                <a href="popular.html" class="sidebar-link">Popular</a>
+                <a href="news.html" class="sidebar-link">News</a>
+                <a href="explore.html" class="sidebar-link">Explore</a>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('profileMenu')">
+                <span class="section-title">PROFILE</span>
+                <span class="collapse-icon" id="profileMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="profileMenu">
+                <a href="profile.html" class="sidebar-link">Profile</a>
+                <a href="chat.html" class="sidebar-link">Chat</a>
+                <a href="settings.html" class="sidebar-link">Settings</a>
+                <a href="friends.html" class="sidebar-link">Friends</a>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('resourcesMenu')">
+                <span class="section-title">RESOURCES</span>
+                <span class="collapse-icon" id="resourcesMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="resourcesMenu">
+                <a href="about.html" class="sidebar-link">About</a>
+                <a href="blog.html" class="sidebar-link">Blog</a>
+                <a href="help.html" class="sidebar-link">Help</a>
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="rules.html" class="bottom-link">Community Rules</a>
+            <a href="privacy.html" class="bottom-link">Privacy Policy</a>
+            <a href="contact.html" class="bottom-link">Contact Us</a>
+        </div>
+
+        </aside>
+    <div class="main-feed">
+        <div class="help-container">
+            <h1 class="help-title" id="helpTitle">Help Center</h1>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)" id="q1">How do I create a post?</div>
+                <div class="faq-answer" id="a1">Click on the text input at the top of the homepage, write your content, and click Post. You can also add images, videos, or polls using the buttons below the text input.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)" id="q2">How do I create a poll?</div>
+                <div class="faq-answer" id="a2">Click the Add Poll button, enter your question and options (minimum 2), then click Create Poll and finally Post.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)" id="q3">How do I follow users?</div>
+                <div class="faq-answer" id="a3">Go to the Explore page, find users you like, and click the Follow button next to their name.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)" id="q4">How do I delete my post?</div>
+                <div class="faq-answer" id="a4">Click the three dots on your post and select Delete. This option is only visible on your own posts.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)" id="q5">How do I change my display name?</div>
+                <div class="faq-answer" id="a5">Go to Profile page, click on Edit Profile, change your display name, and click Save Profile.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)" id="q6">How do I change password?</div>
+                <div class="faq-answer" id="a6">Go to Settings page and click on Change Password. Enter your current password and new password.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)" id="q7">How do I report a user?</div>
+                <div class="faq-answer" id="a7">Click on the three dots on the user's post and select Report. Our team will review the report.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)" id="q8">Need more help?</div>
+                <div class="faq-answer" id="a8">Contact us through the <a href="contact.html">Contact page</a> or email support@Loppo.com</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h3 id="needHelpTitle">Need Help?</h3>
+        <ul class="sidebar-list">
+            <li onclick="location.href='contact.html'" id="contactSupport">Contact Support</li>
+            <li onclick="location.href='rules.html'" id="communityRules">Community Rules</li>
+            <li onclick="location.href='about.html'" id="aboutUs">About Us</li>
+        </ul>
+    </div>
+</div>
+<script src="js/shared.js"></script>
+<script src="js/help.js"></script>
+</body>
+</html>

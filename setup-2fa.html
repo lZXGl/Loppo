@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup 2FA - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .setup-container {
+            max-width: 500px;
+            margin: 60px auto;
+            background: var(--nav-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        #qrCode {
+            margin: 20px auto;
+            padding: 10px;
+            background: white;
+            display: inline-block;
+        }
+        .token-input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5em;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
+    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
+    <div class="nav-actions">
+        <button class="btn-lang" id="langBtn">العربية</button>
+    </div>
+</nav>
+    <div class="setup-container">
+        <h1>Enable Two-Factor Authentication</h1>
+        <p>Scan the QR code with your authenticator app (like Google Authenticator or Authy).</p>
+        <div id="qrCodeContainer">
+            <img id="qrCode" src="" alt="QR Code">
+        </div>
+        <p>Enter the 6-digit code from your app to verify.</p>
+        <input type="text" id="token" class="token-input" placeholder="000000" maxlength="6">
+        <button class="btn-primary" style="width:100%" onclick="verify2FA()">Verify & Enable</button>
+    </div>
+
+    <script src="js/shared.js"></script>
+    <script>
+        async function loadQR() {
+            const res = await fetch('/api/2fa/setup');
+            if (res.ok) {
+                const data = await res.json();
+                document.getElementById('qrCode').src = data.qrCode;
+            } else {
+                showNotification('Please login first', 'info');
+                window.location.href = 'login.html';
+            }
+        }
+
+        async function verify2FA() {
+            const token = document.getElementById('token').value;
+            const res = await fetch('/api/2fa/verify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token })
+            });
+
+            if (res.ok) {
+                showNotification('2FA Enabled Successfully!', 'success');
+                window.location.href = 'profile.html';
+            } else {
+                const data = await res.json();
+                showNotification(data.error || 'Verification failed', 'error');
+            }
+        }
+
+        loadQR();
+    </script>
+</body>
+</html>

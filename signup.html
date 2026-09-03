@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" id="app-root" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+
+    <!-- Unified Header -->
+    <header class="loppo-header" role="banner">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo" aria-label="Loppo Home">
+                <div class="brand-icon">L</div>
+                <h1 class="brand-title">Loppo</h1>
+            </a>
+
+            <div class="header-actions">
+                <button type="button" class="btn-icon-nav" id="themeToggleBtn" aria-label="Toggle Theme">
+                    <span id="themeIcon">🌓</span>
+                </button>
+                <button type="button" class="btn-pill btn-pill-outline" id="langToggleBtn" aria-label="Change Language">
+                    🌐 <span id="langBtnText">العربية</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="signup-container" role="main">
+        <div class="signup-header">
+            <h1 id="signupTitle">Create Account</h1>
+            <p id="signupSubtitle">Join the Loppo community today</p>
+        </div>
+
+        <form id="signupForm">
+            <div class="input-group">
+                <label id="fullNameLabel" for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name" autocomplete="name">
+            </div>
+
+            <div class="input-group">
+                <label id="usernameLabel" for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="Choose a unique username" autocomplete="username">
+            </div>
+
+            <div class="input-group">
+                <label id="emailLabel" for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email" autocomplete="email">
+            </div>
+
+            <div class="input-group">
+                <label id="passwordLabel" for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Create a strong password" autocomplete="new-password">
+            </div>
+
+            <div class="input-group">
+                <label id="confirmLabel" for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password" autocomplete="new-password">
+            </div>
+
+            <button type="submit" class="btn-pill btn-pill-primary signup-btn" id="signupBtn">Create Account</button>
+        </form>
+
+        <div class="divider">
+            <span id="orText">OR</span>
+        </div>
+
+        <div class="login-link">
+            <p id="loginText">Already have an account? <a href="login.html">Log In</a></p>
+        </div>
+    </main>
+
+    <div class="loppo-toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <script src="js/shared.js"></script>
+    <script src="js/signup.js"></script>
+</body>
+</html>

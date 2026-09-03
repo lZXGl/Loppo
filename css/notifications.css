@@ -1,0 +1,152 @@
+.notifications-container {
+    background: var(--nav-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 20px;
+}
+
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.notif-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notif-title h1 {
+    font-size: 1.5em;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.page-action-row {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn-ghost:hover {
+    background: var(--hover-bg);
+}
+
+.notif-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notif-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    background: var(--hover-bg);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.notif-item:hover {
+    transform: translateX(5px);
+    background: var(--border);
+}
+
+.notif-item.unread {
+    background: rgba(0, 121, 211, 0.1);
+    border-left: 3px solid var(--primary-btn);
+}
+
+.notif-content {
+    flex: 1;
+}
+
+.notif-text {
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.notif-time {
+    font-size: 0.75em;
+    color: var(--text-muted);
+}
+
+.notif-status {
+    font-size: 0.7em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--primary-btn);
+    color: white;
+}
+
+.notif-status.seen {
+    background: var(--text-muted);
+}
+
+.notif-empty {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-muted);
+}
+
+.notif-empty h3 {
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.sidebar h3 {
+    margin-bottom: 15px;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-list li {
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-main);
+}
+
+.sidebar-list li:hover {
+    background: var(--hover-bg);
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .notif-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .notif-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}

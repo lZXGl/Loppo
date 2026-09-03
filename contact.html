@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+<nav>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
+    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
+    <div class="nav-actions">
+        <button class="btn-lang" id="langBtn">العربية</button>
+        <div onclick="location.href='notifications.html'" style="cursor:pointer;font-size:1.2em;" title="Notifications"></div>
+        <button class="btn-primary" onclick="location.href='login.html'" id="loginBtn">Log In</button>
+        <div id="user-avatar" style="cursor:pointer;display:none;" onclick="location.href='profile.html'">
+            <img id="nav-avatar" src="" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+        <aside class="sidebar-loppo">
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('mainMenu')">
+                <span class="section-title">MAIN</span>
+                <span class="collapse-icon" id="mainMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="mainMenu">
+                <a href="index.html" class="sidebar-link">Home</a>
+                <a href="popular.html" class="sidebar-link">Popular</a>
+                <a href="news.html" class="sidebar-link">News</a>
+                <a href="explore.html" class="sidebar-link">Explore</a>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('profileMenu')">
+                <span class="section-title">PROFILE</span>
+                <span class="collapse-icon" id="profileMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="profileMenu">
+                <a href="profile.html" class="sidebar-link">Profile</a>
+                <a href="chat.html" class="sidebar-link">Chat</a>
+                <a href="settings.html" class="sidebar-link">Settings</a>
+                <a href="friends.html" class="sidebar-link">Friends</a>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('resourcesMenu')">
+                <span class="section-title">RESOURCES</span>
+                <span class="collapse-icon" id="resourcesMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="resourcesMenu">
+                <a href="about.html" class="sidebar-link">About</a>
+                <a href="blog.html" class="sidebar-link">Blog</a>
+                <a href="help.html" class="sidebar-link">Help</a>
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="rules.html" class="bottom-link">Community Rules</a>
+            <a href="privacy.html" class="bottom-link">Privacy Policy</a>
+            <a href="contact.html" class="bottom-link">Contact Us</a>
+        </div>
+
+        </aside>
+
+    <div class="main-feed">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1 id="contactTitle">Contact Us</h1>
+                <p id="contactSubtitle">We would love to hear from you Fill out the form and we will get back to you within 24 hours.</p>
+            </div>
+            
+            <form id="contactForm" onsubmit="submitContact(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label id="nameLabel">Full Name</label>
+                        <input type="text" id="fullName" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label id="emailLabel">Email Address</label>
+                        <input type="email" id="email" required placeholder="your@email.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label id="subjectLabel">Subject</label>
+                    <select id="subject" required>
+                        <option value="" id="selectOption">Select a subject...</option>
+                        <option id="optGeneral">General Inquiry</option>
+                        <option id="optTech">Technical Support</option>
+                        <option id="optBug">Bug Report</option>
+                        <option id="optFeature">Feature Request</option>
+                        <option id="optPartnership">Partnership</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label id="messageLabel">Message</label>
+                    <textarea id="message" rows="5" required placeholder="Please describe your issue or question in detail..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary" id="sendBtn" style="width: 100%; padding: 14px;">Send Message</button>
+            </form>
+            
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="emoji">📧</div>
+                    <div class="value" id="emailValue">support@Loppo.com</div>
+                    <div class="label" id="emailLabelCard">Email</div>
+                </div>
+                <div class="info-card">
+                    <div class="emoji">🐦</div>
+                    <div class="value" id="twitterValue">Loppo</div>
+                    <div class="label" id="twitterLabel">Twitter</div>
+                </div>
+                <div class="info-card">
+                    <div class="emoji"></div>
+                    <div class="value" id="discordValue">Discord.gg/Loppo</div>
+                    <div class="label" id="discordLabel">Discord</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h3 id="quickLinksTitle">Quick Links</h3>
+        <ul class="sidebar-list">
+            <li onclick="location.href='about.html'" id="aboutLink">About Us</li>
+            <li onclick="location.href='help.html'" id="helpLink">Help Center</li>
+            <li onclick="location.href='rules.html'" id="rulesLink">Community Rules</li>
+        </ul>
+    </div>
+</div>
+<script src="js/shared.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-box {
+            background: var(--nav-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .stat-box h2 { font-size: 2.5em; color: var(--primary-btn); }
+        .table-container {
+            background: var(--nav-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid var(--border); }
+        .delete-btn { background: #ff4757; color: white; padding: 5px 10px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo-container" onclick="location.href='index.html'"><h2 style="margin:0;color:var(--primary-btn);">Loppo Admin</h2></div>
+    <button class="btn-primary" onclick="location.href='index.html'">Back to Site</button>
+</nav>
+
+<div class="container" style="padding: 40px; display: block;">
+    <h1>Admin Command Center</h1>
+    <p style="color: var(--text-muted); margin-bottom: 30px;">Manage users, content, and platform health.</p>
+
+    <div class="admin-grid">
+        <div class="stat-box">
+            <h2 id="totalUsers">0</h2>
+            <p>Total Users</p>
+        </div>
+        <div class="stat-box">
+            <h2 id="totalPosts">0</h2>
+            <p>Total Posts</p>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <h3>Registered Users</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Admin</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="userTable"></tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <h3>Platform Posts</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Author</th>
+                    <th>Content</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="postTable"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="js/shared.js"></script>
+<script>
+    async function loadStats() {
+        const res = await fetch('/api/admin/stats');
+        if (!res.ok) { window.location.href = '/'; return; }
+        const data = await res.json();
+        document.getElementById('totalUsers').innerText = data.userCount;
+        document.getElementById('totalPosts').innerText = data.postCount;
+    }
+
+    async function loadUsers() {
+        const res = await fetch('/api/admin/users');
+        const users = await res.json();
+        document.getElementById('userTable').innerHTML = users.map(u => `
+            <tr>
+                <td>${u.id}</td>
+                <td>${escapeHtml(u.username)}</td>
+                <td>${u.email}</td>
+                <td>${u.isAdmin ? '' : ''}</td>
+                <td><button class="delete-btn" onclick="deleteUser(${u.id})">Delete</button></td>
+            </tr>
+        `).join('');
+    }
+
+    async function loadAllPosts() {
+        const res = await fetch('/api/posts');
+        const posts = await res.json();
+        document.getElementById('postTable').innerHTML = posts.map(p => `
+            <tr>
+                <td>${p.id}</td>
+                <td>${escapeHtml(p.author)}</td>
+                <td style="max-width:300px; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(p.text)}</td>
+                <td><button class="delete-btn" onclick="deletePost(${p.id})">Delete</button></td>
+            </tr>
+        `).join('');
+    }
+
+    async function deleteUser(id) {
+        if (confirm('Delete this user?')) {
+            await fetch(\`/api/admin/users/\${id}\`, { method: 'DELETE' });
+            loadUsers();
+            loadStats();
+        }
+    }
+
+    async function deletePost(id) {
+        if (confirm('Delete this post?')) {
+            await fetch(\`/api/admin/posts/\${id}\`, { method: 'DELETE' });
+            loadAllPosts();
+            loadStats();
+        }
+    }
+
+    loadStats();
+    loadUsers();
+    loadAllPosts();
+</script>
+</body>
+</html>

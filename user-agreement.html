@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Agreement - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/user-agreement.css">
+</head>
+<body>
+
+<nav>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
+    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
+    <div class="nav-actions">
+        <button class="btn-lang" id="langBtn">العربية</button>
+        <div onclick="location.href='notifications.html'" style="cursor:pointer;font-size:1.2em;" title="Notifications"></div>
+        <button class="btn-primary" onclick="location.href='login.html'" id="loginBtn">Log In</button>
+        <div id="user-avatar" style="cursor:pointer;display:none;" onclick="location.href='profile.html'">
+            <img id="nav-avatar" src="" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+        <aside class="sidebar-loppo">
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('mainMenu')">
+                <span class="section-title">MAIN</span>
+                <span class="collapse-icon" id="mainMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="mainMenu">
+                <a href="index.html" class="sidebar-link">Home</a>
+                <a href="popular.html" class="sidebar-link">Popular</a>
+                <a href="news.html" class="sidebar-link">News</a>
+                <a href="explore.html" class="sidebar-link">Explore</a>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('profileMenu')">
+                <span class="section-title">PROFILE</span>
+                <span class="collapse-icon" id="profileMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="profileMenu">
+                <a href="profile.html" class="sidebar-link">Profile</a>
+                <a href="chat.html" class="sidebar-link">Chat</a>
+                <a href="settings.html" class="sidebar-link">Settings</a>
+                <a href="friends.html" class="sidebar-link">Friends</a>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('resourcesMenu')">
+                <span class="section-title">RESOURCES</span>
+                <span class="collapse-icon" id="resourcesMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="resourcesMenu">
+                <a href="about.html" class="sidebar-link">About</a>
+                <a href="blog.html" class="sidebar-link">Blog</a>
+                <a href="help.html" class="sidebar-link">Help</a>
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="rules.html" class="bottom-link">Community Rules</a>
+            <a href="privacy.html" class="bottom-link">Privacy Policy</a>
+            <a href="contact.html" class="bottom-link">Contact Us</a>
+        </div>
+
+        </aside>
+
+    <div class="main-feed">
+        <div class="agreement-container">
+            <div class="agreement-header">
+                <h1 id="agreementTitle">User Agreement</h1>
+                <p id="agreementLastUpdated">Last updated: December 2024</p>
+            </div>
+
+            <div class="agreement-section">
+                <h2 id="section1Title">1. Acceptance of Terms</h2>
+                <p id="section1Text">By accessing or using Loppo, you agree to be bound by this User Agreement and all terms incorporated by reference. If you do not agree to these terms, please do not use the platform.</p>
+            </div>
+
+            <div class="agreement-section">
+                <h2 id="section2Title">2. User Accounts</h2>
+                <p id="section2Text">You are responsible for maintaining the confidentiality of your account credentials. You agree to accept responsibility for all activities that occur under your account. You must be at least 13 years old to use Loppo.</p>
+            </div>
+
+            <div class="agreement-section">
+                <h2 id="section3Title">3. User Content</h2>
+                <p id="section3Text">You retain ownership of any content you post on Loppo. By posting content, you grant Loppo a non-exclusive, royalty-free license to display and distribute your content on the platform. You are solely responsible for the content you post.</p>
+            </div>
+
+            <div class="agreement-section">
+                <h2 id="section4Title">4. Prohibited Conduct</h2>
+                <p id="section4Text">You agree not to post content that is illegal, harassing, defamatory, or violates the rights of others. You may not use the platform to distribute spam, malware, or engage in any fraudulent activity.</p>
+            </div>
+
+            <div class="agreement-section">
+                <h2 id="section5Title">5. Termination</h2>
+                <p id="section5Text">We reserve the right to suspend or terminate your account at our sole discretion, without notice, for conduct that violates this agreement or is harmful to other users or the platform.</p>
+            </div>
+
+            <div class="agreement-section">
+                <h2 id="section6Title">6. Disclaimer of Warranties</h2>
+                <p id="section6Text">Loppo is provided "as is" without warranties of any kind. We do not guarantee that the platform will be uninterrupted or error-free.</p>
+            </div>
+
+            <div class="agreement-section">
+                <h2 id="section7Title">7. Limitation of Liability</h2>
+                <p id="section7Text">To the maximum extent permitted by law, Loppo shall not be liable for any indirect, incidental, or consequential damages arising from your use of the platform.</p>
+            </div>
+
+            <div class="agreement-section">
+                <h2 id="section8Title">8. Changes to Agreement</h2>
+                <p id="section8Text">We may modify this agreement at any time. Continued use of Loppo after changes constitutes acceptance of the modified terms.</p>
+            </div>
+
+            <div class="agreement-section">
+                <h2 id="section9Title">9. Contact</h2>
+                <p id="section9Text">For questions about this agreement, please contact us through the <a href="contact.html">Contact page</a>.</p>
+            </div>
+
+            <div class="agreement-actions">
+                <button class="btn-primary" id="agreeBtn" onclick="acceptAgreement()">I Agree</button>
+                <button class="btn-media" id="declineBtn" onclick="declineAgreement()">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h3 id="quickLinksTitle">Quick Navigation</h3>
+        <ul class="sidebar-list">
+            <li onclick="scrollToSection('section1')">1. Acceptance of Terms</li>
+            <li onclick="scrollToSection('section2')">2. User Accounts</li>
+            <li onclick="scrollToSection('section3')">3. User Content</li>
+            <li onclick="scrollToSection('section4')">4. Prohibited Conduct</li>
+            <li onclick="scrollToSection('section5')">5. Termination</li>
+            <li onclick="scrollToSection('section6')">6. Disclaimer</li>
+            <li onclick="scrollToSection('section7')">7. Liability</li>
+            <li onclick="scrollToSection('section8')">8. Changes</li>
+            <li onclick="scrollToSection('section9')">9. Contact</li>
+        </ul>
+    </div>
+</div>
+<script src="js/shared.js"></script>
+<script src="js/user-agreement.js"></script>
+</body>
+</html>

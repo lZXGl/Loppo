@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+
+<nav>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
+    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
+    <div class="nav-actions">
+        <button class="btn-lang" id="langBtn">العربية</button>
+        <div onclick="location.href='notifications.html'" style="cursor:pointer;font-size:1.2em;" title="Notifications"></div>
+        <button class="btn-primary" onclick="location.href='login.html'" id="loginBtn">Log In</button>
+        <div id="user-avatar" style="cursor:pointer;display:none;" onclick="location.href='profile.html'">
+            <img id="nav-avatar" src="" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+        <aside class="sidebar-loppo">
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('mainMenu')">
+                <span class="section-title">MAIN</span>
+                <span class="collapse-icon" id="mainMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="mainMenu">
+                <a href="index.html" class="sidebar-link">Home</a>
+                <a href="popular.html" class="sidebar-link">Popular</a>
+                <a href="news.html" class="sidebar-link">News</a>
+                <a href="explore.html" class="sidebar-link">Explore</a>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('profileMenu')">
+                <span class="section-title">PROFILE</span>
+                <span class="collapse-icon" id="profileMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="profileMenu">
+                <a href="profile.html" class="sidebar-link">Profile</a>
+                <a href="chat.html" class="sidebar-link">Chat</a>
+                <a href="settings.html" class="sidebar-link">Settings</a>
+                <a href="friends.html" class="sidebar-link">Friends</a>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('resourcesMenu')">
+                <span class="section-title">RESOURCES</span>
+                <span class="collapse-icon" id="resourcesMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="resourcesMenu">
+                <a href="about.html" class="sidebar-link">About</a>
+                <a href="blog.html" class="sidebar-link">Blog</a>
+                <a href="help.html" class="sidebar-link">Help</a>
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="rules.html" class="bottom-link">Community Rules</a>
+            <a href="privacy.html" class="bottom-link">Privacy Policy</a>
+            <a href="contact.html" class="bottom-link">Contact Us</a>
+        </div>
+
+        </aside>
+
+    <div class="main-feed">
+        <div class="accessibility-container">
+            <div class="page-header">
+                <h1 id="accessibilityTitle">Accessibility at Loppo</h1>
+                <p id="accessibilitySubtitle">We are committed to making our platform accessible to everyone.</p>
+            </div>
+
+            <div class="section-card">
+                <div class="badge" id="wcagBadge">WCAG 2.1 Compliant</div>
+                <h2 id="commitmentTitle">Our Commitment</h2>
+                <p id="commitmentText">Loppo is designed to be accessible to people with disabilities. We follow the Web Content Accessibility Guidelines (WCAG) 2.1 at level AA to ensure our platform is usable by everyone.</p>
+            </div>
+
+            <div class="section-card">
+                <h2 id="featuresTitle">Accessibility Features</h2>
+                <ul id="featuresList">
+                    <li id="feature1">Screen reader compatible</li>
+                    <li id="feature2">Full keyboard navigation support</li>
+                    <li id="feature3">Dark mode for reduced eye strain</li>
+                    <li id="feature4">Responsive design for all devices</li>
+                    <li id="feature5">High contrast color options</li>
+                    <li id="feature6">Text resizing support</li>
+                </ul>
+            </div>
+
+            <div class="section-card">
+                <h2 id="helpTitle">Need Help?</h2>
+                <p id="helpText">If you experience any accessibility issues, please contact us at <strong>accessibility@Loppo.com</strong> or visit our <a href="contact.html" id="contactLink">Contact page</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h3 id="quickLinksTitle">Quick Links</h3>
+        <ul class="sidebar-list">
+            <li onclick="location.href='contact.html'" id="contactLinkSidebar">Contact Us</li>
+            <li onclick="location.href='help.html'" id="helpLinkSidebar">Help Center</li>
+            <li onclick="location.href='rules.html'" id="rulesLinkSidebar">Community Rules</li>
+        </ul>
+    </div>
+</div>
+<script src="js/shared.js"></script>
+<script src="js/accessibility.js"></script>
+</body>
+</html>

@@ -1,0 +1,918 @@
+/* ==========================================================================
+   LOPPO - MODERN DESIGN SYSTEM & CORE STYLESHEET
+   Refactored for Clean Semantics, Modern UI/UX, Dark/Light Themes & Mobile
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties (Design Tokens)
+   -------------------------------------------------------------------------- */
+:root {
+    /* Brand & Accents */
+    --accent-color: #0f766e;
+    --accent-color-rgb: 15, 118, 110;
+    --accent-hover: #115e59;
+    --accent-light: rgba(15, 118, 110, 0.12);
+    --primary-btn: var(--accent-color);
+
+    /* Light Theme Palette */
+    --bg-body: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-alt: #f1f5f9;
+    --bg-surface-hover: #e2e8f0;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+
+    /* Legacy CSS Variable Compatibility */
+    --bg-color: var(--bg-body);
+    --nav-bg: var(--bg-surface);
+    --text-main: var(--text-primary);
+    --hover-bg: var(--bg-surface-alt);
+    --border: var(--border-subtle);
+    --poll-color: var(--accent-color);
+
+    /* Text Hierarchy */
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --text-inverse: #ffffff;
+
+    /* Borders & Dividers */
+    --border-subtle: #e2e8f0;
+    --border-focus: var(--accent-color);
+
+    /* State & Semantics */
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --upvote-color: #f97316;
+    --downvote-color: #3b82f6;
+    --bookmark-color: #eab308;
+
+    /* Shadows & Elevation */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+    --shadow-accent: 0 4px 14px rgba(var(--accent-color-rgb), 0.25);
+
+    /* Border Radius Scale */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 22px;
+    --radius-full: 9999px;
+
+    /* Layout Dimensions */
+    --header-height: 64px;
+    --sidebar-left-width: 260px;
+    --sidebar-right-width: 290px;
+    --feed-max-width: 700px;
+    --container-max-width: 1320px;
+
+    /* Transitions */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark Theme Palette */
+[data-theme="dark"], body.dark-mode {
+    --accent-color: #14b8a6;
+    --accent-color-rgb: 20, 184, 166;
+    --accent-hover: #2dd4bf;
+    --accent-light: rgba(20, 184, 166, 0.15);
+    --primary-btn: var(--accent-color);
+
+    --bg-body: #090d16;
+    --bg-surface: #111827;
+    --bg-surface-alt: #1e293b;
+    --bg-surface-hover: #273549;
+    --bg-glass: rgba(17, 24, 39, 0.85);
+
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-inverse: #090d16;
+
+    --border-subtle: #1f2937;
+    --border-focus: var(--accent-color);
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.6);
+    --shadow-accent: 0 4px 16px rgba(var(--accent-color-rgb), 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Typography
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+img, video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   3. App Header & Main Navigation Bar
+   -------------------------------------------------------------------------- */
+.loppo-header {
+    background-color: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.header-container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+/* Hamburger toggle for mobile sidebar */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+    background: var(--bg-surface-alt);
+    gap: 4px;
+    transition: background var(--transition-fast);
+}
+
+.hamburger-btn:hover {
+    background: var(--bg-surface-hover);
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: var(--text-primary);
+    border-radius: 2px;
+    transition: transform var(--transition-normal), opacity var(--transition-normal);
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Brand Logo */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+}
+
+.brand-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--accent-color) 0%, #38bdf8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-accent);
+}
+
+.brand-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.45rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Global Search Bar */
+.search-form {
+    flex: 1;
+    max-width: 440px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    padding: 0 16px;
+    height: 40px;
+    transition: all var(--transition-normal);
+}
+
+.search-input-wrapper:focus-within {
+    background: var(--bg-surface);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.search-icon-svg {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+}
+
+[dir="rtl"] .search-icon-svg {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+.search-field {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.search-field::placeholder {
+    color: var(--text-muted);
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Theme & Accent Palette Switcher */
+.theme-picker-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-surface-alt);
+    padding: 4px 8px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+}
+
+.accent-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.accent-dot:hover {
+    transform: scale(1.2);
+}
+
+.accent-dot.active {
+    border-color: var(--text-primary);
+    transform: scale(1.15);
+}
+
+.btn-icon-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface-alt);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+    font-size: 1.1rem;
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.btn-icon-nav:hover {
+    background: var(--bg-surface-hover);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+.badge-count {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: var(--danger);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--bg-surface);
+}
+
+.btn-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: var(--radius-full);
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all var(--transition-normal);
+}
+
+.btn-pill-primary {
+    background: var(--primary-btn);
+    color: var(--text-inverse);
+    box-shadow: var(--shadow-accent);
+}
+
+.btn-pill-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(var(--accent-color-rgb), 0.35);
+}
+
+.btn-pill-outline {
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+.btn-pill-outline:hover {
+    background: var(--bg-surface-hover);
+    border-color: var(--text-muted);
+}
+
+/* User Avatar Nav Button */
+.user-avatar-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 10px 3px 3px;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.user-avatar-btn:hover {
+    background: var(--bg-surface-hover);
+    border-color: var(--accent-color);
+}
+
+.user-avatar-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-avatar-initials {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   4. Main 3-Column Layout Grid
+   -------------------------------------------------------------------------- */
+.app-layout-container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 24px 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 28px;
+    min-height: calc(100vh - var(--header-height));
+}
+
+.loppo-feed-main {
+    flex: 1;
+    min-width: 0;
+    max-width: var(--feed-max-width);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Modals & Backdrop
+   -------------------------------------------------------------------------- */
+.drawer-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 890;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.drawer-backdrop.active {
+    display: block;
+    opacity: 1;
+}
+
+.image-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.image-modal.active {
+    display: flex;
+    animation: modalFadeIn var(--transition-normal);
+}
+
+.modal-image {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: contain;
+    transform: scale(0.95);
+    animation: modalZoomIn var(--transition-smooth) forwards;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition-fast);
+}
+
+.close-modal-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   6. Toast Notifications
+   -------------------------------------------------------------------------- */
+.loppo-toast-container {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.loppo-notification {
+    pointer-events: auto;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    padding: 12px 20px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    animation: toastSlideUp var(--transition-smooth);
+    min-width: 220px;
+    justify-content: center;
+}
+
+.loppo-notification.success { border-color: var(--success); }
+.loppo-notification.error { border-color: var(--danger); }
+.loppo-notification.info { border-color: var(--accent-color); }
+
+.loppo-notification.hide {
+    animation: toastSlideDown var(--transition-fast) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   7. Mobile Bottom Navigation Bar
+   -------------------------------------------------------------------------- */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border-subtle);
+    z-index: 1000;
+    padding: 0 16px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    transition: color var(--transition-fast);
+}
+
+.mobile-nav-item.active, .mobile-nav-item:hover {
+    color: var(--accent-color);
+}
+
+.mobile-nav-icon {
+    font-size: 1.25rem;
+}
+
+.mobile-nav-create {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: var(--shadow-accent);
+    margin-top: -18px;
+    transition: transform var(--transition-fast);
+}
+
+.mobile-nav-create:active {
+    transform: scale(0.92);
+}
+
+/* --------------------------------------------------------------------------
+   8. Animations & Media Queries
+   -------------------------------------------------------------------------- */
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalZoomIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes toastSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastSlideDown {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1140px) {
+    .loppo-sidebar-right {
+        display: none !important;
+    }
+    .app-layout-container {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 820px) {
+    .hamburger-btn {
+        display: flex;
+    }
+    
+    .mobile-bottom-nav {
+        display: flex;
+    }
+
+    .app-layout-container {
+        padding: 16px 12px 80px 12px;
+    }
+
+    .search-form {
+        max-width: 240px;
+    }
+}
+
+@media (max-width: 580px) {
+    .search-form {
+        display: none;
+    }
+    .header-container {
+        padding: 0 12px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   9. Legacy Classes Support (Guarantees site-wide visual consistency)
+   -------------------------------------------------------------------------- */
+nav:not(.loppo-header):not(.mobile-bottom-nav):not(.feed-filter-bar):not(.sidebar-nav-section) {
+    background-color: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    gap: 16px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#logo-text, .logo {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 1.45rem !important;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #38bdf8 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    padding: 0 16px;
+    height: 40px;
+    width: 100%;
+    max-width: 440px;
+    transition: all var(--transition-normal);
+}
+
+.search-container:focus-within {
+    background: var(--bg-surface);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+.search-icon::before {
+    content: "🔍";
+    font-size: 0.9em;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.container:not(.app-layout-container):not(.login-container):not(.signup-container) {
+    display: flex;
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 24px 20px;
+    min-height: calc(100vh - var(--header-height));
+    align-items: flex-start;
+    justify-content: center;
+    gap: 28px;
+}
+
+.main-feed:not(.loppo-feed-main) {
+    flex: 1;
+    min-width: 0;
+    max-width: var(--feed-max-width);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar:not(.loppo-sidebar-right) {
+    width: var(--sidebar-right-width);
+    padding: 18px;
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    position: sticky;
+    top: calc(var(--header-height) + 24px);
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.sidebar h3 {
+    margin-bottom: 14px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.sidebar-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-list li {
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    background: var(--bg-surface-alt);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.sidebar-list li:hover {
+    background: var(--bg-surface-hover);
+    color: var(--accent-color);
+    transform: translateX(4px);
+}
+
+.btn-primary {
+    background-color: var(--primary-btn);
+    color: var(--text-inverse);
+    border: none;
+    padding: 8px 18px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.88rem;
+    box-shadow: var(--shadow-accent);
+    transition: all var(--transition-normal);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.btn-lang {
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-lang:hover {
+    background: var(--bg-surface-hover);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    background: var(--bg-surface-alt);
+    border: none;
+    padding: 8px;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+}
+
+.hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--text-primary);
+    border-radius: 2px;
+}
+
+@media (max-width: 820px) {
+    .hamburger {
+        display: flex;
+    }
+    .container:not(.app-layout-container):not(.login-container):not(.signup-container) {
+        padding: 16px 12px 80px 12px;
+    }
+    .sidebar:not(.loppo-sidebar-right) {
+        display: none;
+    }
+}
+

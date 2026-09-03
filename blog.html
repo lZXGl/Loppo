@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+<nav>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
+    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
+    <div class="nav-actions">
+        <button class="btn-lang" id="langBtn">العربية</button>
+        <div onclick="location.href='notifications.html'" style="cursor:pointer;font-size:1.2em;" title="Notifications"></div>
+        <button class="btn-primary" onclick="location.href='login.html'" id="loginBtn">Log In</button>
+        <div id="user-avatar" style="cursor:pointer;display:none;" onclick="location.href='profile.html'">
+            <img id="nav-avatar" src="" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+        <aside class="sidebar-loppo">
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('mainMenu')">
+                <span class="section-title">MAIN</span>
+                <span class="collapse-icon" id="mainMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="mainMenu">
+                <a href="index.html" class="sidebar-link">Home</a>
+                <a href="popular.html" class="sidebar-link">Popular</a>
+                <a href="news.html" class="sidebar-link">News</a>
+                <a href="explore.html" class="sidebar-link">Explore</a>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('profileMenu')">
+                <span class="section-title">PROFILE</span>
+                <span class="collapse-icon" id="profileMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="profileMenu">
+                <a href="profile.html" class="sidebar-link">Profile</a>
+                <a href="chat.html" class="sidebar-link">Chat</a>
+                <a href="settings.html" class="sidebar-link">Settings</a>
+                <a href="friends.html" class="sidebar-link">Friends</a>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-header" onclick="toggleSection('resourcesMenu')">
+                <span class="section-title">RESOURCES</span>
+                <span class="collapse-icon" id="resourcesMenuIcon">▼</span>
+            </div>
+            <div class="section-content" id="resourcesMenu">
+                <a href="about.html" class="sidebar-link">About</a>
+                <a href="blog.html" class="sidebar-link">Blog</a>
+                <a href="help.html" class="sidebar-link">Help</a>
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="rules.html" class="bottom-link">Community Rules</a>
+            <a href="privacy.html" class="bottom-link">Privacy Policy</a>
+            <a href="contact.html" class="bottom-link">Contact Us</a>
+        </div>
+
+        </aside>
+
+    <div class="main-feed">
+        <div class="blog-header">
+            <h1 id="blogTitle">Official Blog</h1>
+            <p id="blogDesc">Latest news and updates from the Loppo team</p>
+        </div>
+
+        <div class="blog-post">
+            <div class="blog-title" id="post1Title">Welcome to Loppo v2.0</div>
+            <div class="blog-meta" id="post1Meta">December 15, 2024 by Admin</div>
+            <div class="blog-content" id="post1Content">
+                <p>We are excited to announce the launch of Loppo 2.0 with new features including video uploads, interactive polls, and improved performance.</p>
+                <br>
+                <p>New features in this release:</p>
+                <ul>
+                    <li id="feature1">Video upload support</li>
+                    <li id="feature2">Interactive polls</li>
+                    <li id="feature3">Loppo-style collapsible sidebar</li>
+                    <li id="feature4">Improved dark mode</li>
+                    <li id="feature5">Arabic language support</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="blog-post">
+            <div class="blog-title" id="post2Title">How to Make the Most of Loppo</div>
+            <div class="blog-meta" id="post2Meta">November 20, 2024 by Community Team</div>
+            <div class="blog-content" id="post2Content">
+                <p>Tips and tricks for engaging with the community, creating popular content, and building your network on Loppo.</p>
+                <br>
+                <p>Key tips:</p>
+                <ul>
+                    <li id="tip1">Post regularly to build your presence</li>
+                    <li id="tip2">Engage with others content through likes and comments</li>
+                    <li id="tip3">Use polls to get community feedback</li>
+                    <li id="tip4">Share images and videos for better engagement</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="blog-post">
+            <div class="blog-title" id="post3Title">Dark Mode Now Available</div>
+            <div class="blog-meta" id="post3Meta">October 5, 2024 by Design Team</div>
+            <div class="blog-content" id="post3Content">
+                <p>You can now toggle between light and dark mode for comfortable browsing day or night. Look for the theme toggle button in the navigation bar.</p>
+                <br>
+                <p>Dark mode reduces eye strain during nighttime browsing and saves battery on OLED screens.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h3 id="recentTitle">Recent Posts</h3>
+        <ul class="sidebar-list">
+            <li id="recent1">Welcome to Loppo v2.0</li>
+            <li id="recent2">How to Make the Most of Loppo</li>
+            <li id="recent3">Dark Mode Available</li>
+        </ul>
+    </div>
+</div>
+<script src="js/shared.js"></script>
+<script src="js/blog.js"></script>
+</body>
+</html>

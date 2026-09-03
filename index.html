@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" id="app-root" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Loppo - The Modern Community & Social Discussion Platform. Connect, share ideas, discover topics, and participate in lively discussions.">
+    <title>Loppo - Modern Discussion & Community Feed</title>
+    
+    <!-- Core Design System & Component Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+    <!-- ======================================================================
+         1. App Header & Global Navigation
+         ====================================================================== -->
+    <header class="loppo-header" role="banner">
+        <div class="header-container">
+            <!-- Mobile Off-Canvas Sidebar Trigger -->
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="sidebarLoppo">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo" aria-label="Loppo Home">
+                <div class="brand-icon">L</div>
+                <h1 class="brand-title">Loppo</h1>
+            </a>
+
+            <!-- Global Search Form -->
+            <form class="search-form" id="globalSearchForm" role="search" onsubmit="return false;">
+                <div class="search-input-wrapper">
+                    <span class="search-icon-svg" aria-hidden="true">🔍</span>
+                    <input type="search" id="globalSearchInput" class="search-field" placeholder="Search posts, topics, discussions..." aria-label="Search posts and topics">
+                </div>
+            </form>
+
+            <!-- Header Actions & Controls -->
+            <div class="header-actions">
+                <!-- Theme Accent Color Palette Picker -->
+                <div class="theme-picker-group" title="Choose Accent Color" role="radiogroup" aria-label="Accent Color Palette">
+                    <button type="button" class="accent-dot active" data-color="#0f766e" style="background:#0f766e;" aria-label="Teal Accent"></button>
+                    <button type="button" class="accent-dot" data-color="#4f46e5" style="background:#4f46e5;" aria-label="Indigo Accent"></button>
+                    <button type="button" class="accent-dot" data-color="#7c3aed" style="background:#7c3aed;" aria-label="Purple Accent"></button>
+                    <button type="button" class="accent-dot" data-color="#d97706" style="background:#d97706;" aria-label="Amber Accent"></button>
+                    <button type="button" class="accent-dot" data-color="#e11d48" style="background:#e11d48;" aria-label="Rose Accent"></button>
+                </div>
+
+                <!-- Dark / Light Theme Toggle Button -->
+                <button type="button" class="btn-icon-nav" id="themeToggleBtn" aria-label="Toggle Dark and Light Mode" title="Toggle Theme">
+                    <span id="themeIcon">🌓</span>
+                </button>
+
+                <!-- Language Toggle Button (English / Arabic RTL) -->
+                <button type="button" class="btn-pill btn-pill-outline" id="langToggleBtn" aria-label="Change Language">
+                    🌐 <span id="langBtnText">العربية</span>
+                </button>
+
+                <!-- Notifications Link -->
+                <a href="notifications.html" class="btn-icon-nav" aria-label="Notifications" title="Notifications">
+                    🔔
+                    <span class="badge-count" id="notifBadgeCount" style="display:none;">0</span>
+                </a>
+
+                <!-- User Auth Area -->
+                <div id="authNavContainer">
+                    <a href="login.html" class="btn-pill btn-pill-primary" id="navLoginBtn">Log In</a>
+                    <a href="profile.html" class="user-avatar-btn" id="navUserAvatar" style="display:none;" aria-label="My Profile">
+                        <img id="navAvatarImg" class="user-avatar-img" src="" alt="User Avatar">
+                        <span id="navAvatarFallback" class="user-avatar-initials" style="display:none;">U</span>
+                        <span id="navUserName" style="font-weight:600;font-size:0.85rem;">Account</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         2. Main App 3-Column Layout
+         ====================================================================== -->
+    <div class="app-layout-container">
+        
+        <!-- LEFT SIDEBAR: Navigation Menu -->
+        <aside class="loppo-sidebar-left" id="sidebarLoppo" aria-label="Main Navigation">
+            <div class="sidebar-scrollable-content">
+                <!-- Section 1: Main Menu -->
+                <nav class="sidebar-nav-section" aria-labelledby="headingMainMenu">
+                    <button type="button" class="nav-section-toggle" id="headingMainMenu" data-toggle="mainMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-mainMenu">MAIN</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="mainMenu">
+                        <li><a href="index.html" class="sidebar-nav-link active"><span class="nav-link-icon">🏠</span><span class="nav-link-text" id="t-home">Home</span></a></li>
+                        <li><a href="popular.html" class="sidebar-nav-link"><span class="nav-link-icon">🔥</span><span class="nav-link-text" id="t-popular">Popular</span></a></li>
+                        <li><a href="news.html" class="sidebar-nav-link"><span class="nav-link-icon">📰</span><span class="nav-link-text" id="t-news">News</span></a></li>
+                        <li><a href="explore.html" class="sidebar-nav-link"><span class="nav-link-icon">🧭</span><span class="nav-link-text" id="t-explore">Explore</span></a></li>
+                    </ul>
+                </nav>
+
+                <!-- Section 2: Profile & Social -->
+                <nav class="sidebar-nav-section" aria-labelledby="headingProfileMenu">
+                    <button type="button" class="nav-section-toggle" id="headingProfileMenu" data-toggle="profileMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-profileMenu">PROFILE</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="profileMenu">
+                        <li><a href="profile.html" class="sidebar-nav-link"><span class="nav-link-icon">👤</span><span class="nav-link-text" id="t-profile">Profile</span></a></li>
+                        <li><a href="chat.html" class="sidebar-nav-link"><span class="nav-link-icon">💬</span><span class="nav-link-text" id="t-chat">Chat</span></a></li>
+                        <li><a href="friends.html" class="sidebar-nav-link"><span class="nav-link-icon">👥</span><span class="nav-link-text" id="t-friends">Friends</span></a></li>
+                        <li><a href="settings.html" class="sidebar-nav-link"><span class="nav-link-icon">⚙️</span><span class="nav-link-text" id="t-settings">Settings</span></a></li>
+                    </ul>
+                </nav>
+
+                <!-- Section 3: Resources & Info -->
+                <nav class="sidebar-nav-section" aria-labelledby="headingResourcesMenu">
+                    <button type="button" class="nav-section-toggle" id="headingResourcesMenu" data-toggle="resourcesMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-resourcesMenu">RESOURCES</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="resourcesMenu">
+                        <li><a href="about.html" class="sidebar-nav-link"><span class="nav-link-icon">ℹ️</span><span class="nav-link-text" id="t-about">About</span></a></li>
+                        <li><a href="blog.html" class="sidebar-nav-link"><span class="nav-link-icon">✍️</span><span class="nav-link-text" id="t-blog">Blog</span></a></li>
+                        <li><a href="help.html" class="sidebar-nav-link"><span class="nav-link-icon">❓</span><span class="nav-link-text" id="t-help">Help</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Sidebar Bottom Legal Footer -->
+            <footer class="sidebar-footer-links">
+                <a href="rules.html" class="footer-link-subtle" id="t-rules">Community Rules</a>
+                <a href="privacy.html" class="footer-link-subtle" id="t-privacy">Privacy Policy</a>
+                <a href="user-agreement.html" class="footer-link-subtle" id="t-agreement">User Agreement</a>
+                <a href="contact.html" class="footer-link-subtle" id="t-contact">Contact Us</a>
+                <span class="copyright-tag">© 2026 Loppo Inc.</span>
+            </footer>
+        </aside>
+
+        <!-- CENTER: Main Discussion Feed -->
+        <main class="loppo-feed-main" id="mainFeed" role="main">
+            
+            <!-- Feed Filter & Sorting Tabs (New Feature) -->
+            <nav class="feed-filter-bar" aria-label="Feed Filters">
+                <div class="filter-tabs-group" role="tablist">
+                    <button type="button" class="feed-sort-tab active" data-sort="hot" role="tab" aria-selected="true" id="tabSortHot">
+                        🔥 <span id="t-tabHot">Hot</span>
+                    </button>
+                    <button type="button" class="feed-sort-tab" data-sort="latest" role="tab" aria-selected="false" id="tabSortLatest">
+                        ⏱️ <span id="t-tabLatest">Latest</span>
+                    </button>
+                    <button type="button" class="feed-sort-tab" data-sort="top" role="tab" aria-selected="false" id="tabSortTop">
+                        🏆 <span id="t-tabTop">Top Liked</span>
+                    </button>
+                    <button type="button" class="feed-sort-tab" data-sort="media" role="tab" aria-selected="false" id="tabSortMedia">
+                        🖼️ <span id="t-tabMedia">Media</span>
+                    </button>
+                    <button type="button" class="feed-sort-tab" data-sort="saved" role="tab" aria-selected="false" id="tabSortSaved">
+                        🔖 <span id="t-tabSaved">Saved</span>
+                    </button>
+                </div>
+                <div class="feed-stats-badge" id="feedCountBadge">Loading...</div>
+            </nav>
+
+            <!-- Interactive Post Composer Card -->
+            <section class="create-post-card" aria-label="Create a new post">
+                <div class="create-post-top">
+                    <img id="postAvatarPreview" src="https://via.placeholder.com/44" alt="My Profile Avatar" class="user-post-avatar">
+                    <div class="post-textarea-wrapper">
+                        <textarea id="postInput" class="post-textarea" placeholder="What's happening in your world?" rows="2" aria-label="Write post content"></textarea>
+                    </div>
+                </div>
+
+                <!-- Media Preview Container (Image) -->
+                <div id="imagePreviewArea" class="composer-preview-area" style="display:none;">
+                    <img id="imagePreview" class="preview-media-element" src="" alt="Selected image preview">
+                    <button type="button" class="remove-preview-btn" id="btnRemoveImage" aria-label="Remove image">✕</button>
+                </div>
+
+                <!-- Media Preview Container (Video) -->
+                <div id="videoPreviewArea" class="composer-preview-area" style="display:none;">
+                    <video id="videoPreview" class="preview-media-element" src="" controls></video>
+                    <button type="button" class="remove-preview-btn" id="btnRemoveVideo" aria-label="Remove video">✕</button>
+                </div>
+
+                <!-- Poll Composer Box -->
+                <div id="pollCreator" class="composer-poll-box" style="display:none;">
+                    <input type="text" id="pollQuestion" class="poll-question-input" placeholder="Ask a question for your poll...">
+                    <div id="pollOptionsContainer" style="display:flex;flex-direction:column;gap:8px;">
+                        <div class="poll-option-row">
+                            <input type="text" class="poll-option-input pollOptionInput" placeholder="Option 1">
+                        </div>
+                        <div class="poll-option-row">
+                            <input type="text" class="poll-option-input pollOptionInput" placeholder="Option 2">
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add-option-pill" id="btnAddPollOption">+ Add Option</button>
+                </div>
+
+                <!-- Post Upload Tools & Submit Toolbar -->
+                <div class="create-post-bottom">
+                    <div class="media-upload-tools">
+                        <!-- Hidden file inputs -->
+                        <input type="file" id="imageUpload" accept="image/*,image/gif" style="display:none;">
+                        <button type="button" class="btn-media-tool" id="btnTriggerImageUpload">
+                            🖼️ <span id="t-toolImage">Image</span>
+                        </button>
+
+                        <input type="file" id="videoUpload" accept="video/*" style="display:none;">
+                        <button type="button" class="btn-media-tool" id="btnTriggerVideoUpload">
+                            🎥 <span id="t-toolVideo">Video</span>
+                        </button>
+
+                        <button type="button" class="btn-media-tool" id="btnTogglePoll">
+                            📊 <span id="t-toolPoll">Poll</span>
+                        </button>
+                    </div>
+
+                    <button type="button" class="btn-pill btn-pill-primary" id="btnSubmitPost">
+                        🚀 <span id="t-btnPost">Publish</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Dynamic Feed Posts List -->
+            <div class="feed-posts-container" id="feedContainer" role="feed" aria-live="polite">
+                <!-- Posts dynamically rendered here by home.js -->
+            </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR: Community Stats & Trending Widgets -->
+        <aside class="loppo-sidebar-right" aria-label="Community Highlights">
+            
+            <!-- User Mini Profile Widget (Logged in / Logged out) -->
+            <div class="sidebar-widget-card" id="userSidebarWidget">
+                <div class="user-widget-profile">
+                    <img id="sidebarUserAvatar" class="widget-user-avatar" src="https://via.placeholder.com/64" alt="User Avatar">
+                    <div>
+                        <h2 class="widget-user-name" id="sidebarUserName">Welcome to Loppo</h2>
+                        <span class="widget-user-handle" id="sidebarUserHandle">Join the conversation</span>
+                    </div>
+                    
+                    <div class="widget-stats-grid" id="sidebarUserStats">
+                        <div class="stat-item">
+                            <span class="stat-val" id="userKarmaScore">0</span>
+                            <span class="stat-lbl" id="t-karma">Karma</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-val" id="userFollowersCount">0</span>
+                            <span class="stat-lbl" id="t-followers">Followers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-val" id="userPostsCount">0</span>
+                            <span class="stat-lbl" id="t-posts">Posts</span>
+                        </div>
+                    </div>
+
+                    <a href="signup.html" class="btn-pill btn-pill-primary" id="sidebarAuthCta" style="width:100%;">Create Account</a>
+                </div>
+            </div>
+
+            <!-- Trending Topics Widget -->
+            <div class="sidebar-widget-card">
+                <div class="widget-title-row">
+                    <h3 class="widget-title" id="t-trendingTitle">📈 Trending Topics</h3>
+                </div>
+                <ul class="trending-topics-list" id="trendingTopicsList">
+                    <li class="trending-topic-item" data-topic="Technology">
+                        <div class="topic-meta-wrapper">
+                            <span class="topic-tag">#Technology</span>
+                            <span class="topic-posts-count">1.4k posts this week</span>
+                        </div>
+                        <span class="topic-arrow">→</span>
+                    </li>
+                    <li class="trending-topic-item" data-topic="WebDev">
+                        <div class="topic-meta-wrapper">
+                            <span class="topic-tag">#WebDev</span>
+                            <span class="topic-posts-count">980 posts this week</span>
+                        </div>
+                        <span class="topic-arrow">→</span>
+                    </li>
+                    <li class="trending-topic-item" data-topic="AI">
+                        <div class="topic-meta-wrapper">
+                            <span class="topic-tag">#AI</span>
+                            <span class="topic-posts-count">2.3k posts this week</span>
+                        </div>
+                        <span class="topic-arrow">→</span>
+                    </li>
+                    <li class="trending-topic-item" data-topic="Gaming">
+                        <div class="topic-meta-wrapper">
+                            <span class="topic-tag">#Gaming</span>
+                            <span class="topic-posts-count">760 posts this week</span>
+                        </div>
+                        <span class="topic-arrow">→</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sponsored Promo Card -->
+            <div class="sidebar-widget-card sponsored-box">
+                <span class="widget-title" style="font-size:0.7rem;margin-bottom:8px;display:block;" id="t-adLabel">Sponsored</span>
+                <h4 class="sponsored-heading" id="t-adTitle">Master Full-Stack Web Dev</h4>
+                <p class="sponsored-text" id="t-adDesc">Build real-world HTML5, modern CSS, and full-stack JS applications step by step.</p>
+                <a href="signup.html" class="btn-pill btn-pill-outline" style="width:100%;font-size:0.8rem;" id="t-adBtn">Explore Academy</a>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Mobile Bottom App Bar -->
+    <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
+        <a href="index.html" class="mobile-nav-item active">
+            <span class="mobile-nav-icon">🏠</span>
+            <span id="t-mbHome">Home</span>
+        </a>
+        <a href="explore.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🧭</span>
+            <span id="t-mbExplore">Explore</span>
+        </a>
+        <button type="button" class="mobile-nav-create" id="mobileQuickPostBtn" aria-label="Create new post">
+            +
+        </button>
+        <a href="notifications.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🔔</span>
+            <span id="t-mbNotif">Alerts</span>
+        </a>
+        <a href="profile.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">👤</span>
+            <span id="t-mbProfile">Profile</span>
+        </a>
+    </nav>
+
+    <!-- Modal for High-Resolution Full-Screen Images -->
+    <div id="imageModal" class="image-modal" role="dialog" aria-modal="true" aria-label="Full Image Viewer">
+        <button type="button" class="close-modal-btn" id="btnCloseModal" aria-label="Close image">&times;</button>
+        <img class="modal-image" id="modalImage" src="" alt="Enlarged media view">
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="loppo-toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <!-- JavaScript Scripts -->
+    <script src="js/shared.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

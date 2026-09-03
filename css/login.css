@@ -1,0 +1,211 @@
+/* Add to existing login.css */
+
+.login-nav {
+    background-color: var(--nav-bg);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.login-nav .logo {
+    margin: 0;
+    cursor: pointer;
+    color: var(--primary-btn);
+}
+
+.lang-btn {
+    background-color: var(--hover-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.lang-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* باقي الستايلات اللي موجودة */
+.login-container {
+    max-width: 420px;
+    margin: 60px auto;
+    background: var(--nav-bg);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border: 1px solid var(--border);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h1 {
+    font-size: 28px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--hover-bg);
+    color: var(--text-main);
+    font-size: 14px;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-btn);
+    box-shadow: 0 0 0 3px rgba(0, 121, 211, 0.1);
+}
+
+.remember-row {
+    margin-bottom: 20px;
+}
+
+.remember-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.remember-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--primary-btn);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-btn);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+}
+
+.divider {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: var(--border);
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.divider span {
+    background: var(--nav-bg);
+    padding: 0 15px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.google-login-btn {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: #444;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s;
+}
+
+.google-login-btn:hover {
+    background: #f8f9fa;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.google-login-btn img {
+    width: 18px;
+    height: 18px;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.signup-link p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.signup-link a {
+    color: var(--primary-btn);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        margin: 30px 20px;
+        padding: 30px 25px;
+    }
+}

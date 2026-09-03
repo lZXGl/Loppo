@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" id="app-root" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Discussion - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/post.css">
+</head>
+<body>
+
+    <!-- Unified Header -->
+    <header class="loppo-header" role="banner">
+        <div class="header-container">
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="sidebarLoppo">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <a href="index.html" class="brand-logo" aria-label="Loppo Home">
+                <div class="brand-icon">L</div>
+                <h1 class="brand-title">Loppo</h1>
+            </a>
+
+            <form class="search-form" id="globalSearchForm" role="search" onsubmit="return false;">
+                <div class="search-input-wrapper">
+                    <span class="search-icon-svg" aria-hidden="true">🔍</span>
+                    <input type="search" id="globalSearchInput" class="search-field" placeholder="Search discussions..." aria-label="Search">
+                </div>
+            </form>
+
+            <div class="header-actions">
+                <button type="button" class="btn-icon-nav" id="themeToggleBtn" aria-label="Toggle Theme">
+                    <span id="themeIcon">🌓</span>
+                </button>
+                <button type="button" class="btn-pill btn-pill-outline" id="langToggleBtn" aria-label="Change Language">
+                    🌐 <span id="langBtnText">العربية</span>
+                </button>
+                <a href="notifications.html" class="btn-icon-nav" aria-label="Notifications">
+                    🔔
+                </a>
+                <div id="authNavContainer">
+                    <a href="login.html" class="btn-pill btn-pill-primary" id="navLoginBtn">Log In</a>
+                    <a href="profile.html" class="user-avatar-btn" id="navUserAvatar" style="display:none;" aria-label="My Profile">
+                        <img id="navAvatarImg" class="user-avatar-img" src="" alt="User Avatar">
+                        <span id="navAvatarFallback" class="user-avatar-initials" style="display:none;">U</span>
+                        <span id="navUserName" style="font-weight:600;font-size:0.85rem;">Account</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+
+    <div class="app-layout-container">
+        <!-- LEFT SIDEBAR -->
+        <aside class="loppo-sidebar-left" id="sidebarLoppo" aria-label="Main Navigation">
+            <div class="sidebar-scrollable-content">
+                <nav class="sidebar-nav-section">
+                    <button type="button" class="nav-section-toggle" data-toggle="mainMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-mainMenu">MAIN</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="mainMenu">
+                        <li><a href="index.html" class="sidebar-nav-link"><span class="nav-link-icon">🏠</span><span id="t-home">Home</span></a></li>
+                        <li><a href="popular.html" class="sidebar-nav-link"><span class="nav-link-icon">🔥</span><span id="t-popular">Popular</span></a></li>
+                        <li><a href="news.html" class="sidebar-nav-link"><span class="nav-link-icon">📰</span><span id="t-news">News</span></a></li>
+                        <li><a href="explore.html" class="sidebar-nav-link"><span class="nav-link-icon">🧭</span><span id="t-explore">Explore</span></a></li>
+                    </ul>
+                </nav>
+
+                <nav class="sidebar-nav-section">
+                    <button type="button" class="nav-section-toggle" data-toggle="profileMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-profileMenu">PROFILE</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="profileMenu">
+                        <li><a href="profile.html" class="sidebar-nav-link"><span class="nav-link-icon">👤</span><span id="t-profile">Profile</span></a></li>
+                        <li><a href="chat.html" class="sidebar-nav-link"><span class="nav-link-icon">💬</span><span id="t-chat">Chat</span></a></li>
+                        <li><a href="friends.html" class="sidebar-nav-link"><span class="nav-link-icon">👥</span><span id="t-friends">Friends</span></a></li>
+                        <li><a href="settings.html" class="sidebar-nav-link"><span class="nav-link-icon">⚙️</span><span id="t-settings">Settings</span></a></li>
+                    </ul>
+                </nav>
+
+                <nav class="sidebar-nav-section">
+                    <button type="button" class="nav-section-toggle" data-toggle="resourcesMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-resourcesMenu">RESOURCES</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="resourcesMenu">
+                        <li><a href="about.html" class="sidebar-link"><span class="nav-link-icon">ℹ️</span><span id="t-about">About</span></a></li>
+                        <li><a href="blog.html" class="sidebar-link"><span class="nav-link-icon">✍️</span><span id="t-blog">Blog</span></a></li>
+                        <li><a href="help.html" class="sidebar-link"><span class="nav-link-icon">❓</span><span id="t-help">Help</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <footer class="sidebar-footer-links">
+                <a href="rules.html" class="footer-link-subtle" id="t-rules">Community Rules</a>
+                <a href="privacy.html" class="footer-link-subtle" id="t-privacy">Privacy Policy</a>
+                <a href="user-agreement.html" class="footer-link-subtle" id="t-agreement">User Agreement</a>
+                <a href="contact.html" class="footer-link-subtle" id="t-contact">Contact Us</a>
+            </footer>
+        </aside>
+
+        <!-- CENTER MAIN -->
+        <main class="loppo-feed-main" role="main">
+            <div class="post-container" id="postContainer">
+                <div style="text-align:center; padding:40px; color:var(--text-muted);">Loading discussion thread...</div>
+            </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="loppo-sidebar-right" aria-label="Community Highlights">
+            <div class="sidebar-widget-card sponsored-box">
+                <span class="widget-title" style="font-size:0.7rem;margin-bottom:8px;display:block;">Community Safety</span>
+                <h4 class="sponsored-heading">Be Respectful</h4>
+                <p class="sponsored-text">Keep discussions constructive, positive, and aligned with our community guidelines.</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Mobile Bottom App Bar -->
+    <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
+        <a href="index.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🏠</span>
+            <span id="t-mbHome">Home</span>
+        </a>
+        <a href="explore.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🧭</span>
+            <span id="t-mbExplore">Explore</span>
+        </a>
+        <a href="notifications.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🔔</span>
+            <span id="t-mbNotif">Alerts</span>
+        </a>
+        <a href="profile.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">👤</span>
+            <span id="t-mbProfile">Profile</span>
+        </a>
+    </nav>
+
+    <!-- Report Post Modal -->
+    <div id="reportPostModal" class="report-modal">
+        <h3 id="reportPostTitle">Report Post</h3>
+        <p>Why are you reporting this post?</p>
+        <textarea id="reportPostReason" class="report-reason" rows="3" placeholder="Describe the issue..."></textarea>
+        <div class="report-buttons">
+            <button class="btn-pill btn-pill-outline" onclick="closeReportPostModal()">Cancel</button>
+            <button class="btn-pill btn-pill-primary" id="submitReportPostBtn">Submit Report</button>
+        </div>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay" onclick="closeAllModals()"></div>
+    <div class="loppo-toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <script src="js/shared.js"></script>
+    <script src="js/post.js"></script>
+</body>
+</html>

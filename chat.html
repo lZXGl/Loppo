@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" id="app-root" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <style>
+        .chat-layout-box {
+            display: flex;
+            height: calc(100vh - var(--header-height) - 48px);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            width: 100%;
+        }
+        .chat-users-panel {
+            width: 280px;
+            border-right: 1px solid var(--border-subtle);
+            overflow-y: auto;
+            background: var(--bg-surface-alt);
+        }
+        [dir="rtl"] .chat-users-panel {
+            border-right: none;
+            border-left: 1px solid var(--border-subtle);
+        }
+        .chat-main-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-surface);
+        }
+        .chat-conversation-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .chat-messages-scroll {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .message-bubble {
+            max-width: 68%;
+            padding: 10px 16px;
+            border-radius: var(--radius-lg);
+            font-size: 0.92rem;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+        .message-bubble.sent {
+            align-self: flex-end;
+            background: var(--accent-color);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        [dir="rtl"] .message-bubble.sent {
+            border-bottom-right-radius: var(--radius-lg);
+            border-bottom-left-radius: 4px;
+        }
+        .message-bubble.received {
+            align-self: flex-start;
+            background: var(--bg-surface-alt);
+            color: var(--text-primary);
+            border-bottom-left-radius: 4px;
+            border: 1px solid var(--border-subtle);
+        }
+        [dir="rtl"] .message-bubble.received {
+            border-bottom-left-radius: var(--radius-lg);
+            border-bottom-right-radius: 4px;
+        }
+        .chat-input-bar {
+            padding: 14px 18px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            gap: 10px;
+            background: var(--bg-surface);
+        }
+        .chat-contact-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: background var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .chat-contact-item img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .chat-contact-item:hover, .chat-contact-item.active {
+            background: var(--bg-surface-hover);
+        }
+        @media (max-width: 768px) {
+            .chat-users-panel {
+                width: 100px;
+            }
+            .chat-contact-item span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Unified Header -->
+    <header class="loppo-header" role="banner">
+        <div class="header-container">
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="sidebarLoppo">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <a href="index.html" class="brand-logo" aria-label="Loppo Home">
+                <div class="brand-icon">L</div>
+                <h1 class="brand-title">Loppo</h1>
+            </a>
+
+            <div class="header-actions">
+                <button type="button" class="btn-icon-nav" id="themeToggleBtn" aria-label="Toggle Theme">
+                    <span id="themeIcon">🌓</span>
+                </button>
+                <button type="button" class="btn-pill btn-pill-outline" id="langToggleBtn" aria-label="Change Language">
+                    🌐 <span id="langBtnText">العربية</span>
+                </button>
+                <a href="notifications.html" class="btn-icon-nav" aria-label="Notifications">
+                    🔔
+                </a>
+                <div id="authNavContainer">
+                    <a href="login.html" class="btn-pill btn-pill-primary" id="navLoginBtn">Log In</a>
+                    <a href="profile.html" class="user-avatar-btn" id="navUserAvatar" style="display:none;" aria-label="My Profile">
+                        <img id="navAvatarImg" class="user-avatar-img" src="" alt="User Avatar">
+                        <span id="navAvatarFallback" class="user-avatar-initials" style="display:none;">U</span>
+                        <span id="navUserName" style="font-weight:600;font-size:0.85rem;">Account</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+
+    <div class="app-layout-container" style="max-width:1440px;">
+        <!-- LEFT SIDEBAR -->
+        <aside class="loppo-sidebar-left" id="sidebarLoppo" aria-label="Main Navigation">
+            <div class="sidebar-scrollable-content">
+                <nav class="sidebar-nav-section">
+                    <button type="button" class="nav-section-toggle" data-toggle="mainMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-mainMenu">MAIN</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="mainMenu">
+                        <li><a href="index.html" class="sidebar-nav-link"><span class="nav-link-icon">🏠</span><span id="t-home">Home</span></a></li>
+                        <li><a href="popular.html" class="sidebar-nav-link"><span class="nav-link-icon">🔥</span><span id="t-popular">Popular</span></a></li>
+                        <li><a href="news.html" class="sidebar-nav-link"><span class="nav-link-icon">📰</span><span id="t-news">News</span></a></li>
+                        <li><a href="explore.html" class="sidebar-nav-link"><span class="nav-link-icon">🧭</span><span id="t-explore">Explore</span></a></li>
+                    </ul>
+                </nav>
+
+                <nav class="sidebar-nav-section">
+                    <button type="button" class="nav-section-toggle" data-toggle="profileMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-profileMenu">PROFILE</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="profileMenu">
+                        <li><a href="profile.html" class="sidebar-nav-link"><span class="nav-link-icon">👤</span><span id="t-profile">Profile</span></a></li>
+                        <li><a href="chat.html" class="sidebar-nav-link active"><span class="nav-link-icon">💬</span><span id="t-chat">Chat</span></a></li>
+                        <li><a href="friends.html" class="sidebar-nav-link"><span class="nav-link-icon">👥</span><span id="t-friends">Friends</span></a></li>
+                        <li><a href="settings.html" class="sidebar-nav-link"><span class="nav-link-icon">⚙️</span><span id="t-settings">Settings</span></a></li>
+                    </ul>
+                </nav>
+
+                <nav class="sidebar-nav-section">
+                    <button type="button" class="nav-section-toggle" data-toggle="resourcesMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-resourcesMenu">RESOURCES</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="resourcesMenu">
+                        <li><a href="about.html" class="sidebar-link"><span class="nav-link-icon">ℹ️</span><span id="t-about">About</span></a></li>
+                        <li><a href="blog.html" class="sidebar-link"><span class="nav-link-icon">✍️</span><span id="t-blog">Blog</span></a></li>
+                        <li><a href="help.html" class="sidebar-link"><span class="nav-link-icon">❓</span><span id="t-help">Help</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <footer class="sidebar-footer-links">
+                <a href="rules.html" class="footer-link-subtle" id="t-rules">Community Rules</a>
+                <a href="privacy.html" class="footer-link-subtle" id="t-privacy">Privacy Policy</a>
+                <a href="user-agreement.html" class="footer-link-subtle" id="t-agreement">User Agreement</a>
+                <a href="contact.html" class="footer-link-subtle" id="t-contact">Contact Us</a>
+            </footer>
+        </aside>
+
+        <!-- CENTER MAIN: Chat Box -->
+        <main class="loppo-feed-main" style="max-width:none;flex:1;" role="main">
+            <div class="chat-layout-box">
+                <div class="chat-users-panel" id="userList">
+                    <div style="padding:20px;color:var(--text-muted);font-size:0.9rem;">Loading contacts...</div>
+                </div>
+                <div class="chat-main-panel">
+                    <div class="chat-conversation-header" id="activeChatUser">💬 Select a user to start direct messaging</div>
+                    <div class="chat-messages-scroll" id="messageContainer"></div>
+                    <div class="chat-input-bar">
+                        <input type="text" id="messageInput" placeholder="Type your message..." style="flex:1;padding:10px 16px;border-radius:var(--radius-full);border:1px solid var(--border-subtle);background:var(--bg-surface-alt);color:var(--text-primary);outline:none;">
+                        <button class="btn-pill btn-pill-primary" onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Bottom App Bar -->
+    <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
+        <a href="index.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🏠</span>
+            <span id="t-mbHome">Home</span>
+        </a>
+        <a href="explore.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🧭</span>
+            <span id="t-mbExplore">Explore</span>
+        </a>
+        <a href="notifications.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🔔</span>
+            <span id="t-mbNotif">Alerts</span>
+        </a>
+        <a href="profile.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">👤</span>
+            <span id="t-mbProfile">Profile</span>
+        </a>
+    </nav>
+
+    <div class="loppo-toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <script src="js/shared.js"></script>
+    <script>
+        let activeReceiverId = null;
+        let currentUser = null;
+
+        async function initChat() {
+            try {
+                const userRes = await fetch('/api/user');
+                if (!userRes.ok) { window.location.href = 'login.html'; return; }
+                currentUser = await userRes.json();
+                
+                const usersRes = await fetch('/api/users');
+                const users = await usersRes.json();
+                
+                const list = document.getElementById('userList');
+                const otherUsers = users.filter(u => u.id !== currentUser.id);
+                if (otherUsers.length === 0) {
+                    list.innerHTML = '<p style="padding:20px;color:var(--text-muted);font-size:0.85rem;">No other members to chat with yet.</p>';
+                    return;
+                }
+
+                list.innerHTML = otherUsers.map(u => `
+                    <div class="chat-contact-item" onclick="selectUser(${u.id}, '${escapeHtml(u.displayName || u.username)}')">
+                        <img src="${u.avatar || 'https://via.placeholder.com/38'}" alt="Avatar">
+                        <span style="font-weight:600;font-size:0.9rem;color:var(--text-primary);">${escapeHtml(u.displayName || u.username)}</span>
+                    </div>
+                `).join('');
+            } catch (e) {
+                console.error('Chat init error', e);
+            }
+        }
+
+        async function selectUser(id, name) {
+            activeReceiverId = id;
+            document.getElementById('activeChatUser').innerHTML = `💬 Chatting with <span style="color:var(--accent-color);">${name}</span>`;
+            document.querySelectorAll('.chat-contact-item').forEach(el => el.classList.remove('active'));
+            loadMessages();
+        }
+
+        async function loadMessages() {
+            if (!activeReceiverId) return;
+            try {
+                const res = await fetch(`/api/messages/${activeReceiverId}`);
+                if (res.ok) {
+                    const messages = await res.json();
+                    const container = document.getElementById('messageContainer');
+                    container.innerHTML = messages.map(m => `
+                        <div class="message-bubble ${m.senderId === currentUser.id ? 'sent' : 'received'}">
+                            ${escapeHtml(m.text)}
+                            <div style="font-size:0.7rem;opacity:0.7;margin-top:4px;">${m.time || ''}</div>
+                        </div>
+                    `).join('');
+                    container.scrollTop = container.scrollHeight;
+                }
+            } catch (e) {}
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const text = input.value.trim();
+            if (!text || !activeReceiverId) return;
+            
+            try {
+                await fetch('/api/messages', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ receiverId: activeReceiverId, text })
+                });
+                input.value = '';
+                loadMessages();
+            } catch (e) {}
+        }
+
+        document.getElementById('messageInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        setInterval(loadMessages, 3000);
+        initChat();
+    </script>
+</body>
+</html>

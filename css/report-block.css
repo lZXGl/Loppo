@@ -1,0 +1,82 @@
+.btn-report, .btn-block {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-report {
+    background: #ffa500;
+    color: white;
+}
+
+.btn-report:hover {
+    background: #ff8c00;
+    transform: scale(1.02);
+}
+
+.btn-block {
+    background: #ff4757;
+    color: white;
+}
+
+.btn-block:hover {
+    background: #e84118;
+    transform: scale(1.02);
+}
+
+.report-modal, .block-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--nav-bg);
+    border-radius: 16px;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px;
+    z-index: 1002;
+    border: 1px solid var(--border);
+    display: none;
+}
+
+.report-modal.active, .block-modal.active {
+    display: block;
+    animation: zoomIn 0.2s ease;
+}
+
+.report-modal h3, .block-modal h3 {
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.report-reason {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--hover-bg);
+    color: var(--text-main);
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+
+.report-buttons, .block-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.report-buttons button, .block-buttons button {
+    padding: 8px 16px;
+}
+
+.blocked-user-message {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    background: var(--hover-bg);
+    border-radius: 12px;
+}

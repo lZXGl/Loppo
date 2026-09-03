@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" id="app-root" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings - Loppo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+
+    <!-- Unified Header -->
+    <header class="loppo-header" role="banner">
+        <div class="header-container">
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="sidebarLoppo">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <a href="index.html" class="brand-logo" aria-label="Loppo Home">
+                <div class="brand-icon">L</div>
+                <h1 class="brand-title">Loppo</h1>
+            </a>
+
+            <form class="search-form" id="globalSearchForm" role="search" onsubmit="return false;">
+                <div class="search-input-wrapper">
+                    <span class="search-icon-svg" aria-hidden="true">🔍</span>
+                    <input type="search" id="globalSearchInput" class="search-field" placeholder="Search..." aria-label="Search">
+                </div>
+            </form>
+
+            <div class="header-actions">
+                <button type="button" class="btn-icon-nav" id="themeToggleBtn" aria-label="Toggle Theme">
+                    <span id="themeIcon">🌓</span>
+                </button>
+                <button type="button" class="btn-pill btn-pill-outline" id="langToggleBtn" aria-label="Change Language">
+                    🌐 <span id="langBtnText">العربية</span>
+                </button>
+                <a href="notifications.html" class="btn-icon-nav" aria-label="Notifications">
+                    🔔
+                </a>
+                <div id="authNavContainer">
+                    <a href="login.html" class="btn-pill btn-pill-primary" id="navLoginBtn">Log In</a>
+                    <a href="profile.html" class="user-avatar-btn" id="navUserAvatar" style="display:none;" aria-label="My Profile">
+                        <img id="navAvatarImg" class="user-avatar-img" src="" alt="User Avatar">
+                        <span id="navAvatarFallback" class="user-avatar-initials" style="display:none;">U</span>
+                        <span id="navUserName" style="font-weight:600;font-size:0.85rem;">Account</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+
+    <div class="app-layout-container">
+        <!-- LEFT SIDEBAR -->
+        <aside class="loppo-sidebar-left" id="sidebarLoppo" aria-label="Main Navigation">
+            <div class="sidebar-scrollable-content">
+                <nav class="sidebar-nav-section">
+                    <button type="button" class="nav-section-toggle" data-toggle="mainMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-mainMenu">MAIN</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="mainMenu">
+                        <li><a href="index.html" class="sidebar-nav-link"><span class="nav-link-icon">🏠</span><span id="t-home">Home</span></a></li>
+                        <li><a href="popular.html" class="sidebar-nav-link"><span class="nav-link-icon">🔥</span><span id="t-popular">Popular</span></a></li>
+                        <li><a href="news.html" class="sidebar-nav-link"><span class="nav-link-icon">📰</span><span id="t-news">News</span></a></li>
+                        <li><a href="explore.html" class="sidebar-nav-link"><span class="nav-link-icon">🧭</span><span id="t-explore">Explore</span></a></li>
+                    </ul>
+                </nav>
+
+                <nav class="sidebar-nav-section">
+                    <button type="button" class="nav-section-toggle" data-toggle="profileMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-profileMenu">PROFILE</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="profileMenu">
+                        <li><a href="profile.html" class="sidebar-nav-link"><span class="nav-link-icon">👤</span><span id="t-profile">Profile</span></a></li>
+                        <li><a href="chat.html" class="sidebar-nav-link"><span class="nav-link-icon">💬</span><span id="t-chat">Chat</span></a></li>
+                        <li><a href="friends.html" class="sidebar-nav-link"><span class="nav-link-icon">👥</span><span id="t-friends">Friends</span></a></li>
+                        <li><a href="settings.html" class="sidebar-nav-link active"><span class="nav-link-icon">⚙️</span><span id="t-settings">Settings</span></a></li>
+                    </ul>
+                </nav>
+
+                <nav class="sidebar-nav-section">
+                    <button type="button" class="nav-section-toggle" data-toggle="resourcesMenu" aria-expanded="true">
+                        <span class="section-title-text" id="t-resourcesMenu">RESOURCES</span>
+                        <span class="nav-section-chevron">▼</span>
+                    </button>
+                    <ul class="nav-links-list" id="resourcesMenu">
+                        <li><a href="about.html" class="sidebar-link"><span class="nav-link-icon">ℹ️</span><span id="t-about">About</span></a></li>
+                        <li><a href="blog.html" class="sidebar-link"><span class="nav-link-icon">✍️</span><span id="t-blog">Blog</span></a></li>
+                        <li><a href="help.html" class="sidebar-link"><span class="nav-link-icon">❓</span><span id="t-help">Help</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <footer class="sidebar-footer-links">
+                <a href="rules.html" class="footer-link-subtle" id="t-rules">Community Rules</a>
+                <a href="privacy.html" class="footer-link-subtle" id="t-privacy">Privacy Policy</a>
+                <a href="user-agreement.html" class="footer-link-subtle" id="t-agreement">User Agreement</a>
+                <a href="contact.html" class="footer-link-subtle" id="t-contact">Contact Us</a>
+            </footer>
+        </aside>
+
+        <!-- CENTER MAIN -->
+        <main class="loppo-feed-main" role="main">
+            <div class="settings-container">
+                <div class="settings-header" style="margin-bottom:24px;">
+                    <h1 id="settingsTitle" style="font-size:1.6rem;font-weight:800;color:var(--text-primary);">⚙️ Account Settings</h1>
+                </div>
+
+                <!-- Appearance Section -->
+                <div class="settings-section">
+                    <h3 id="appearanceTitle">Appearance & Themes</h3>
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label" id="darkModeLabel">Dark Theme</div>
+                            <div class="setting-desc" id="darkModeDesc">Switch between light and dark visual mode</div>
+                        </div>
+                        <button class="btn-pill btn-pill-outline" onclick="toggleTheme()" id="themeBtn">🌓 Toggle</button>
+                    </div>
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label" id="languageLabel">Language / اللغة</div>
+                            <div class="setting-desc" id="languageDesc">Toggle between English and Arabic (RTL)</div>
+                        </div>
+                        <button class="btn-pill btn-pill-outline" id="langSettingBtn" onclick="toggleLanguage()">🌐 Switch Language</button>
+                    </div>
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Accent Color</div>
+                            <div class="setting-desc">Select your preferred accent brand color</div>
+                        </div>
+                        <div class="color-presets" style="display:flex;gap:8px;">
+                            <div class="color-dot accent-dot" data-color="#0f766e" style="background:#0f766e;width:24px;height:24px;border-radius:50%;cursor:pointer;"></div>
+                            <div class="color-dot accent-dot" data-color="#4f46e5" style="background:#4f46e5;width:24px;height:24px;border-radius:50%;cursor:pointer;"></div>
+                            <div class="color-dot accent-dot" data-color="#7c3aed" style="background:#7c3aed;width:24px;height:24px;border-radius:50%;cursor:pointer;"></div>
+                            <div class="color-dot accent-dot" data-color="#d97706" style="background:#d97706;width:24px;height:24px;border-radius:50%;cursor:pointer;"></div>
+                            <div class="color-dot accent-dot" data-color="#e11d48" style="background:#e11d48;width:24px;height:24px;border-radius:50%;cursor:pointer;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account & Security Section -->
+                <div class="settings-section">
+                    <h3>Account Security & 2FA</h3>
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Two-Factor Authentication (2FA)</div>
+                            <div class="setting-desc">Add an extra layer of security using Google Authenticator</div>
+                        </div>
+                        <a href="setup-2fa.html" class="btn-pill btn-pill-primary">Setup 2FA</a>
+                    </div>
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Account Session</div>
+                            <div class="setting-desc">Log out of your current session</div>
+                        </div>
+                        <a href="/logout" class="btn-pill btn-pill-outline" style="color:var(--danger);">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="loppo-sidebar-right" aria-label="Settings Info">
+            <div class="sidebar-widget-card sponsored-box">
+                <span class="widget-title" style="font-size:0.7rem;margin-bottom:8px;display:block;">Privacy & Security</span>
+                <h4 class="sponsored-heading">Stay Secure</h4>
+                <p class="sponsored-text">We never share your personal email or credentials with third parties.</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Mobile Bottom App Bar -->
+    <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
+        <a href="index.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🏠</span>
+            <span id="t-mbHome">Home</span>
+        </a>
+        <a href="explore.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🧭</span>
+            <span id="t-mbExplore">Explore</span>
+        </a>
+        <a href="notifications.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🔔</span>
+            <span id="t-mbNotif">Alerts</span>
+        </a>
+        <a href="profile.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">👤</span>
+            <span id="t-mbProfile">Profile</span>
+        </a>
+    </nav>
+
+    <div class="loppo-toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <script src="js/shared.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>
