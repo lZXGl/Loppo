@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Default / Light Mode Tokens (Linear Inverse Palette) */
+    --color-canvas: #ffffff;
+    --color-surface-1: #f8f9fa;
+    --color-surface-2: #ffffff;
+    --color-surface-3: #f1f3f5;
+    --color-hairline: #e6e8eb;
+    --color-hairline-strong: #d1d5db;
+    --color-ink: #0b0c0e;
+    --color-ink-muted: #374151;
+    --color-ink-subtle: #6b7280;
+    --color-ink-tertiary: #9ca3af;
+
+    /* Accent Defaults (Linear Lavender) */
+    --accent-color: #5e6ad2;
+    --accent-hover: #4f59b8;
+    --accent-glow: rgba(94, 106, 210, 0.12);
+    --accent-subtle: rgba(94, 106, 210, 0.08);
+  }
+
+  /* Dark Mode Tokens (Linear Obsidian Craft Palette) */
+  :root[data-theme="dark"],
+  html[data-theme="dark"],
+  html.dark,
+  body.dark-mode {
+    --color-canvas: #010102;
+    --color-surface-1: #0f1011;
+    --color-surface-2: #141516;
+    --color-surface-3: #18191a;
+    --color-hairline: #23252a;
+    --color-hairline-strong: #34343a;
+    --color-ink: #f7f8f8;
+    --color-ink-muted: #d0d6e0;
+    --color-ink-subtle: #8a8f98;
+    --color-ink-tertiary: #62666d;
+
+    /* Accent Defaults (Linear Signature Lavender) */
+    --accent-color: #5e6ad2;
+    --accent-hover: #828fff;
+    --accent-glow: rgba(94, 106, 210, 0.22);
+    --accent-subtle: rgba(94, 106, 210, 0.14);
+  }
+
+  /* Smooth transition ONLY during active toggle */
+  html.theme-transitioning,
+  html.theme-transitioning *,
+  html.theme-transitioning *::before,
+  html.theme-transitioning *::after {
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    min-height: 100vh;
+    background-image: radial-gradient(circle at 50% -15%, var(--accent-glow) 0%, transparent 60%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Custom Sleek Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-hairline);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-hairline-strong);
+  }
+}
+
+/* Linear Shimmer Pulse */
+.linear-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-1) 0%,
+    var(--color-surface-2) 50%,
+    var(--color-surface-1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite linear;
+}

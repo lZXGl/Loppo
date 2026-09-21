@@ -1,2 +1,7 @@
 node_modules
 database.sqlite*
+.env
+pm2.log
+*.log
+.next/
+*.png.bak

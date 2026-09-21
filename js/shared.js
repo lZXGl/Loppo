@@ -166,40 +166,23 @@ function loadAccentColor() {
  * Toggle Dark and Light theme
  */
 function toggleTheme() {
-    const isDark = document.body.classList.contains('dark-mode');
-    const newTheme = isDark ? 'light' : 'dark';
-    
-    if (newTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.body.setAttribute('data-theme', 'dark');
-        const themeIcon = document.getElementById('themeIcon');
-        if (themeIcon) themeIcon.textContent = '☀️';
+    if (window.toggleLoppoTheme) {
+        window.toggleLoppoTheme();
     } else {
-        document.body.classList.remove('dark-mode');
-        document.body.removeAttribute('data-theme');
-        const themeIcon = document.getElementById('themeIcon');
-        if (themeIcon) themeIcon.textContent = '🌙';
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('loppoTheme', newTheme);
     }
-    
-    localStorage.setItem('loppoTheme', newTheme);
-    showNotification(newTheme === 'dark' ? 'Dark theme enabled' : 'Light theme enabled', 'info');
 }
 
 /**
  * Load and apply saved theme
  */
 function loadTheme() {
-    const savedTheme = localStorage.getItem('loppoTheme') || 'light';
-    const themeIcon = document.getElementById('themeIcon');
-    
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.body.setAttribute('data-theme', 'dark');
-        if (themeIcon) themeIcon.textContent = '☀️';
-    } else {
-        document.body.classList.remove('dark-mode');
-        document.body.removeAttribute('data-theme');
-        if (themeIcon) themeIcon.textContent = '🌙';
+    const savedTheme = localStorage.getItem('loppoTheme') || localStorage.getItem('theme') || 'dark';
+    if (window.setLoppoTheme) {
+        window.setLoppoTheme(savedTheme);
     }
 }
 
@@ -365,8 +348,12 @@ function setupSharedEventListeners() {
 
     // Theme Toggle
     const themeToggleBtn = document.getElementById('themeToggleBtn');
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', toggleTheme);
+    if (themeToggleBtn && !themeToggleBtn.dataset.bound) {
+        themeToggleBtn.dataset.bound = 'true';
+        themeToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleTheme();
+        });
     }
 
     // Language Toggle
@@ -383,25 +370,8 @@ function setupSharedEventListeners() {
         });
     });
 
-    // Global Search Form
-    const searchForm = document.getElementById('globalSearchForm');
-    const searchInput = document.getElementById('globalSearchInput');
-    if (searchForm && searchInput) {
-        const executeSearch = () => {
-            const q = searchInput.value.trim();
-            if (q) window.location.href = `explore.html?q=${encodeURIComponent(q)}`;
-        };
-        searchForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            executeSearch();
-        });
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                executeSearch();
-            }
-        });
-    }
+    // Global Search Form with Live Suggestions
+    initGlobalSearch();
 
     // Trending topic items click handler
     document.querySelectorAll('.trending-topic-item').forEach(item => {
@@ -411,17 +381,285 @@ function setupSharedEventListeners() {
         });
     });
 
-    // Highlight active sidebar navigation link based on current page
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    // Highlight active sidebar navigation link based on current page (supports clean URLs and .html)
+    let currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    if (!currentPath.endsWith('.html') && currentPath !== '') currentPath += '.html';
+    if (currentPath === '') currentPath = 'index.html';
+
     document.querySelectorAll('.sidebar-nav-link').forEach(link => {
         const href = link.getAttribute('href');
-        if (href === currentPath) {
+        if (href === currentPath || href === currentPath.replace('.html', '')) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
         }
     });
+
+    // Initialize Back-To-Top button
+    initBackToTop();
+
+    // Initialize Keyboard Shortcuts
+    initKeyboardShortcuts();
 }
+
+/**
+ * Global Search with Instant Suggestions Dropdown
+ */
+function initGlobalSearch() {
+    const searchForm = document.getElementById('globalSearchForm');
+    const searchInput = document.getElementById('globalSearchInput');
+    if (!searchForm || !searchInput) return;
+
+    // Create suggestions container if not exists
+    let dropdown = document.getElementById('searchSuggestionsDropdown');
+    if (!dropdown) {
+        dropdown = document.createElement('div');
+        dropdown.id = 'searchSuggestionsDropdown';
+        dropdown.className = 'search-suggestions-dropdown';
+        searchForm.style.position = 'relative';
+        searchForm.appendChild(dropdown);
+    }
+
+    const popularSuggestions = [
+        { label: '🔥 Trending: Web Standards 2026', query: 'web standards', type: 'topic' },
+        { label: '🤖 Topic: Artificial Intelligence', query: 'ai', type: 'topic' },
+        { label: '💻 Topic: Frontend & JavaScript', query: 'javascript', type: 'topic' },
+        { label: '🛡️ Topic: Security & Privacy', query: 'security', type: 'topic' },
+        { label: '🚀 Topic: SQLite & Backends', query: 'backend', type: 'topic' }
+    ];
+
+    const renderSuggestions = (query) => {
+        const q = query.trim().toLowerCase();
+        if (!q) {
+            dropdown.classList.remove('active');
+            return;
+        }
+
+        const filtered = popularSuggestions.filter(s => s.label.toLowerCase().includes(q) || s.query.includes(q));
+
+        let html = `
+            <div class="search-suggestion-group">
+                <div class="search-suggestion-title">Quick Search</div>
+                <div class="search-suggestion-item" data-query="${escapeHtml(query)}">
+                    <span class="item-icon">🔍</span>
+                    <span>Search for "<strong>${escapeHtml(query)}</strong>"</span>
+                </div>
+            </div>`;
+
+        if (filtered.length > 0) {
+            html += `
+                <div class="search-suggestion-group">
+                    <div class="search-suggestion-title">Suggested Topics</div>
+                    ${filtered.map(f => `
+                        <div class="search-suggestion-item" data-query="${escapeHtml(f.query)}">
+                            <span class="item-icon">✨</span>
+                            <span>${escapeHtml(f.label)}</span>
+                        </div>
+                    `).join('')}
+                </div>`;
+        }
+
+        dropdown.innerHTML = html;
+        dropdown.classList.add('active');
+
+        dropdown.querySelectorAll('.search-suggestion-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const targetQ = item.dataset.query;
+                window.location.href = `explore.html?q=${encodeURIComponent(targetQ)}`;
+            });
+        });
+    };
+
+    searchInput.addEventListener('input', (e) => renderSuggestions(e.target.value));
+    searchInput.addEventListener('focus', (e) => {
+        if (e.target.value.trim()) renderSuggestions(e.target.value);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!searchForm.contains(e.target)) dropdown.classList.remove('active');
+    });
+
+    const executeSearch = () => {
+        const q = searchInput.value.trim();
+        if (q) window.location.href = `explore.html?q=${encodeURIComponent(q)}`;
+    };
+
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        executeSearch();
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            executeSearch();
+        } else if (e.key === 'Escape') {
+            dropdown.classList.remove('active');
+        }
+    });
+}
+
+/**
+ * Back to Top Button
+ */
+function initBackToTop() {
+    let btn = document.getElementById('backToTopBtn');
+    if (!btn) {
+        btn = document.createElement('button');
+        btn.id = 'backToTopBtn';
+        btn.className = 'back-to-top-btn';
+        btn.setAttribute('aria-label', 'Back to top of page');
+        btn.innerHTML = '▲';
+        document.body.appendChild(btn);
+    }
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 350) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }, { passive: true });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+/**
+ * Global Share Modal
+ */
+function openShareModal({ title = 'Loppo Community', text = 'Check out this discussion on Loppo!', url = window.location.href }) {
+    if (navigator.share) {
+        navigator.share({ title, text, url }).catch(() => {});
+        return;
+    }
+
+    let modal = document.getElementById('loppoShareModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'loppoShareModal';
+        modal.className = 'loppo-modal-overlay';
+        modal.innerHTML = `
+            <div class="loppo-modal-card" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+                <div class="loppo-modal-header">
+                    <h3 class="loppo-modal-title" id="shareModalTitle">Share Discussion</h3>
+                    <button class="loppo-modal-close" id="btnCloseShareModal" aria-label="Close share dialog">✕</button>
+                </div>
+                <div class="share-options-grid">
+                    <a id="shareTwitter" target="_blank" rel="noopener noreferrer" class="share-option-btn">
+                        <span>𝕏</span>
+                        <span>Twitter/X</span>
+                    </a>
+                    <a id="shareWhatsApp" target="_blank" rel="noopener noreferrer" class="share-option-btn">
+                        <span>💬</span>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a id="shareLinkedIn" target="_blank" rel="noopener noreferrer" class="share-option-btn">
+                        <span>💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a id="shareReddit" target="_blank" rel="noopener noreferrer" class="share-option-btn">
+                        <span>🚀</span>
+                        <span>Reddit</span>
+                    </a>
+                </div>
+                <div class="share-copy-input-row">
+                    <input type="text" id="shareUrlField" readonly>
+                    <button type="button" class="btn-pill btn-pill-primary" id="btnCopyShareUrl">Copy Link</button>
+                </div>
+            </div>`;
+        document.body.appendChild(modal);
+
+        modal.querySelector('#btnCloseShareModal').addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+    }
+
+    const shareUrlField = modal.querySelector('#shareUrlField');
+    shareUrlField.value = url;
+
+    modal.querySelector('#shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    modal.querySelector('#shareWhatsApp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(text + ' ' + url)}`;
+    modal.querySelector('#shareLinkedIn').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    modal.querySelector('#shareReddit').href = `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+
+    const copyBtn = modal.querySelector('#btnCopyShareUrl');
+    copyBtn.onclick = () => {
+        navigator.clipboard.writeText(url).then(() => {
+            showNotification('Link copied to clipboard!', 'success');
+            modal.classList.remove('active');
+        }).catch(() => {
+            shareUrlField.select();
+            document.execCommand('copy');
+            showNotification('Link copied!', 'success');
+            modal.classList.remove('active');
+        });
+    };
+
+    modal.classList.add('active');
+}
+
+/**
+ * Keyboard Shortcuts Modal (? key)
+ */
+function initKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+        if (e.key === '?' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+            e.preventDefault();
+            openShortcutsModal();
+        } else if (e.key === 'Escape') {
+            const sm = document.getElementById('shortcutsModal');
+            if (sm && sm.classList.contains('active')) sm.classList.remove('active');
+            const shm = document.getElementById('loppoShareModal');
+            if (shm && shm.classList.contains('active')) shm.classList.remove('active');
+        }
+    });
+}
+
+function openShortcutsModal() {
+    let modal = document.getElementById('shortcutsModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'shortcutsModal';
+        modal.className = 'loppo-modal-overlay';
+        modal.innerHTML = `
+            <div class="loppo-modal-card" role="dialog" aria-modal="true" aria-labelledby="shortcutsModalTitle">
+                <div class="loppo-modal-header">
+                    <h3 class="loppo-modal-title" id="shortcutsModalTitle">Keyboard Shortcuts</h3>
+                    <button class="loppo-modal-close" id="btnCloseShortcuts" aria-label="Close shortcuts dialog">✕</button>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px;font-size:0.9rem;margin-top:8px;">
+                    <div style="display:flex;justify-content:space-between;"><span>Focus Search Bar</span><kbd style="background:var(--bg-surface-alt);padding:3px 8px;border-radius:4px;border:1px solid var(--border-subtle);">/</kbd></div>
+                    <div style="display:flex;justify-content:space-between;"><span>Toggle Theme (Dark/Light)</span><kbd style="background:var(--bg-surface-alt);padding:3px 8px;border-radius:4px;border:1px solid var(--border-subtle);">T</kbd></div>
+                    <div style="display:flex;justify-content:space-between;"><span>Close Modals / Drawers</span><kbd style="background:var(--bg-surface-alt);padding:3px 8px;border-radius:4px;border:1px solid var(--border-subtle);">ESC</kbd></div>
+                    <div style="display:flex;justify-content:space-between;"><span>Open Shortcuts Help</span><kbd style="background:var(--bg-surface-alt);padding:3px 8px;border-radius:4px;border:1px solid var(--border-subtle);">?</kbd></div>
+                </div>
+            </div>`;
+        document.body.appendChild(modal);
+        modal.querySelector('#btnCloseShortcuts').addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+    }
+    modal.classList.add('active');
+}
+
+// Global hotkeys for / and T
+document.addEventListener('keydown', (e) => {
+    if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+    if (e.key === '/') {
+        e.preventDefault();
+        const searchInput = document.getElementById('globalSearchInput');
+        if (searchInput) {
+            searchInput.focus();
+            searchInput.select();
+        }
+    } else if (e.key === 't' || e.key === 'T') {
+        toggleTheme();
+    }
+});
 
 // Initialize on DOM Ready
 document.addEventListener('DOMContentLoaded', () => {

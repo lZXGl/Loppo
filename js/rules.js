@@ -1,16 +1,15 @@
-let currentLanguage = localStorage.getItem('appLanguage') || 'en';
-
+// Uses shared currentLanguage from shared.js
 const translations = {
     en: {
         rulesTitle: 'Community Rules',
-        rule1: 'Be respectful to all members',
+        rule1: 'Be respectful and courteous to all members',
         rule2: 'No hate speech, harassment, or bullying',
-        rule3: 'No spam or self-promotion without context',
+        rule3: 'No spam or repetitive low-effort submissions',
         rule4: 'Post relevant content to the appropriate categories',
-        rule5: 'No sharing of personal information',
-        rule6: 'No NSFW or inappropriate content',
-        rule7: 'Follow Reddiquette guidelines',
-        rule8: 'Report violations to moderators',
+        rule5: 'Do not share private personal information of others',
+        rule6: 'Keep discussions family-friendly and constructive',
+        rule7: 'Follow Loppo community civility guidelines',
+        rule8: 'Report violations directly to moderators',
         relatedTitle: 'Related Pages',
         privacyLink: 'Privacy Policy',
         termsLink: 'Terms of Service',
@@ -18,13 +17,13 @@ const translations = {
     },
     ar: {
         rulesTitle: 'قواعد المجتمع',
-        rule1: 'كن محترماً مع جميع الأعضاء',
+        rule1: 'كن محترماً ولبقاً مع جميع الأعضاء',
         rule2: 'ممنوع خطاب الكراهية أو التحرش أو التنمر',
-        rule3: 'ممنوع الإزعاج أو الترويج الذاتي دون سياق',
+        rule3: 'ممنوع الإزعاج أو المنشورات المكررة بلا جدوى',
         rule4: 'انشر محتوى ذا صلة بالفئات المناسبة',
-        rule5: 'ممنوع مشاركة المعلومات الشخصية',
-        rule6: 'ممنوع المحتوى غير اللائق',
-        rule7: 'اتبع إرشادات Reddiquette',
+        rule5: 'ممنوع مشاركة المعلومات الشخصية للآخرين',
+        rule6: 'حافظ على حوار راقٍ ونقاش هادف وبناء',
+        rule7: 'اتبع إرشادات مجتمع لوبو الأخلاقية',
         rule8: 'أبلغ عن الانتهاكات إلى المشرفين',
         relatedTitle: 'صفحات ذات صلة',
         privacyLink: 'سياسة الخصوصية',

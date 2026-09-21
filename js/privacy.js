@@ -1,21 +1,20 @@
-let currentLanguage = localStorage.getItem('appLanguage') || 'en';
-
+// Uses shared currentLanguage from shared.js
 const translations = {
     en: {
         policyTitle: 'Privacy Policy',
-        lastUpdated: 'Last updated: December 2024',
-        section1Title: '1. Data Storage',
-        section1Text: 'All your posts, comments, and preferences are stored locally in your browser using localStorage. We do not collect or store any personal data on external servers.',
+        lastUpdated: 'Last updated: 2026',
+        section1Title: '1. Data Storage & Security',
+        section1Text: 'All your posts, comments, and preferences are protected using modern web standards. We never sell your personal data to external advertisers.',
         section2Title: '2. Account Information',
-        section2Text: 'Your display name and avatar are stored locally on your device only. No account information is sent to any external server.',
+        section2Text: 'Your display name, username, and authentication details are safeguarded with bcrypt encryption and secure session handling.',
         section3Title: '3. Cookies',
-        section3Text: 'We do not use cookies or any tracking technologies. Your activity remains private to your device.',
+        section3Text: 'We only use strictly necessary session cookies for authentication and login persistence.',
         section4Title: '4. Third Parties',
-        section4Text: 'We do not share any data with third parties as no data is collected.',
+        section4Text: 'We do not sell or trade your personal information to third-party marketing companies.',
         section5Title: '5. Your Rights',
-        section5Text: 'You can delete all your data by clearing your browser localStorage or using the delete options within the app.',
+        section5Text: 'You can update your profile or delete your account at any time directly through your account settings.',
         section6Title: '6. Contact',
-        section6Text: 'For questions about this privacy policy, contact us via the Contact page.',
+        section6Text: 'For questions about this privacy policy, contact us via privacy@loppo.com or our Contact page.',
         quickLinksTitle: 'Quick Links',
         rulesLink: 'Community Rules',
         termsLink: 'Terms of Service',
@@ -23,7 +22,7 @@ const translations = {
     },
     ar: {
         policyTitle: 'سياسة الخصوصية',
-        lastUpdated: 'آخر تحديث: ديسمبر 2024',
+        lastUpdated: 'آخر تحديث: 2026',
         section1Title: '1. تخزين البيانات',
         section1Text: 'جميع منشوراتك وتعليقاتك وتفضيلاتك مخزنة محلياً في متصفحك باستخدام localStorage. لا نقوم بجمع أو تخزين أي بيانات شخصية على خوادم خارجية.',
         section2Title: '2. معلومات الحساب',

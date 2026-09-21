@@ -3,79 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessibility - Loppo</title>
+    <title>Accessibility Statement & Standards - Loppo</title>
+    <meta name="description" content="Explore Loppo's dedication to digital accessibility, WCAG 2.1 AA compliance, assistive technology compatibility, and inclusive design.">
+    
+    <!-- Canonical & Favicons -->
+    <link rel="canonical" href="https://loppo.com/accessibility">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Loppo">
+    <meta property="og:title" content="Accessibility Statement & Standards - Loppo">
+    <meta property="og:description" content="Explore Loppo's dedication to digital accessibility and inclusive design.">
+    <meta property="og:url" content="https://loppo.com/accessibility">
+    <meta property="og:image" content="https://loppo.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Accessibility Statement & Standards - Loppo">
+    <meta name="twitter:description" content="Explore Loppo's dedication to digital accessibility and inclusive design.">
+    <meta name="twitter:image" content="https://loppo.com/assets/og-image.png">
+
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://loppo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Accessibility",
+          "item": "https://loppo.com/accessibility"
+        }
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/accessibility.css">
+    <script src="js/theme.js"></script>
+    <script src="js/components/loppo-ui.js"></script>
 </head>
 <body>
 
-<nav>
-    <button class="hamburger"><span></span><span></span><span></span></button>
-    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
-    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
-    <div class="nav-actions">
-        <button class="btn-lang" id="langBtn">العربية</button>
-        <div onclick="location.href='notifications.html'" style="cursor:pointer;font-size:1.2em;" title="Notifications"></div>
-        <button class="btn-primary" onclick="location.href='login.html'" id="loginBtn">Log In</button>
-        <div id="user-avatar" style="cursor:pointer;display:none;" onclick="location.href='profile.html'">
-            <img id="nav-avatar" src="" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
-        </div>
-    </div>
-</nav>
+<loppo-header></loppo-header>
 
-<div class="container">
-        <aside class="sidebar-loppo">
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('mainMenu')">
-                <span class="section-title">MAIN</span>
-                <span class="collapse-icon" id="mainMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="mainMenu">
-                <a href="index.html" class="sidebar-link">Home</a>
-                <a href="popular.html" class="sidebar-link">Popular</a>
-                <a href="news.html" class="sidebar-link">News</a>
-                <a href="explore.html" class="sidebar-link">Explore</a>
-            </div>
-        </div>
-
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('profileMenu')">
-                <span class="section-title">PROFILE</span>
-                <span class="collapse-icon" id="profileMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="profileMenu">
-                <a href="profile.html" class="sidebar-link">Profile</a>
-                <a href="chat.html" class="sidebar-link">Chat</a>
-                <a href="settings.html" class="sidebar-link">Settings</a>
-                <a href="friends.html" class="sidebar-link">Friends</a>
-            </div>
-        </div>
-
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('resourcesMenu')">
-                <span class="section-title">RESOURCES</span>
-                <span class="collapse-icon" id="resourcesMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="resourcesMenu">
-                <a href="about.html" class="sidebar-link">About</a>
-                <a href="blog.html" class="sidebar-link">Blog</a>
-                <a href="help.html" class="sidebar-link">Help</a>
-            </div>
-        </div>
-
-        <div class="sidebar-bottom">
-            <a href="rules.html" class="bottom-link">Community Rules</a>
-            <a href="privacy.html" class="bottom-link">Privacy Policy</a>
-            <a href="contact.html" class="bottom-link">Contact Us</a>
-        </div>
-
-        </aside>
+<div class="app-layout-container">
+        <loppo-sidebar></loppo-sidebar>
 
     <div class="main-feed">
+        <!-- Breadcrumbs -->
+        <nav class="loppo-breadcrumbs" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Accessibility</li>
+            </ol>
+        </nav>
+
         <div class="accessibility-container">
             <div class="page-header">
-                <h1 id="accessibilityTitle">Accessibility at Loppo</h1>
+                <h1 id="accessibilityTitle" class="page-main-heading">Accessibility at Loppo</h1>
                 <p id="accessibilitySubtitle">We are committed to making our platform accessible to everyone.</p>
             </div>
 

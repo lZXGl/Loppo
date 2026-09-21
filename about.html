@@ -3,77 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Loppo</title>
+    <title>About Us & Platform Mission - Loppo</title>
+    <meta name="description" content="Learn about Loppo, our mission to foster healthy community conversations, our architecture, and our values.">
+    
+    <!-- Canonical & Favicons -->
+    <link rel="canonical" href="https://loppo.com/about">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Loppo">
+    <meta property="og:title" content="About Us & Platform Mission - Loppo">
+    <meta property="og:description" content="Learn about Loppo, our mission to foster healthy community conversations, our architecture, and our values.">
+    <meta property="og:url" content="https://loppo.com/about">
+    <meta property="og:image" content="https://loppo.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Us & Platform Mission - Loppo">
+    <meta name="twitter:description" content="Learn about Loppo, our mission to foster healthy community conversations, our architecture, and our values.">
+    <meta name="twitter:image" content="https://loppo.com/assets/og-image.png">
+
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://loppo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Us",
+          "item": "https://loppo.com/about"
+        }
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/about.css">
+    <script src="js/theme.js"></script>
+    <script src="js/components/loppo-ui.js"></script>
 </head>
 <body>
-    <nav>
-    <button class="hamburger"><span></span><span></span><span></span></button>
-    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
-    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
-    <div class="nav-actions">
-        <button class="btn-lang" id="langBtn">العربية</button>
-        <div onclick="location.href='notifications.html'" style="cursor:pointer;font-size:1.2em;" title="Notifications"></div>
-        <button class="btn-primary" onclick="location.href='login.html'" id="loginBtn">Log In</button>
-        <div id="user-avatar" style="cursor:pointer;display:none;" onclick="location.href='profile.html'">
-            <img id="nav-avatar" src="" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
-        </div>
-    </div>
-</nav>
+    <loppo-header></loppo-header>
 
-    <div class="container">
-            <aside class="sidebar-loppo">
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('mainMenu')">
-                <span class="section-title">MAIN</span>
-                <span class="collapse-icon" id="mainMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="mainMenu">
-                <a href="index.html" class="sidebar-link">Home</a>
-                <a href="popular.html" class="sidebar-link">Popular</a>
-                <a href="news.html" class="sidebar-link">News</a>
-                <a href="explore.html" class="sidebar-link">Explore</a>
-            </div>
-        </div>
-
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('profileMenu')">
-                <span class="section-title">PROFILE</span>
-                <span class="collapse-icon" id="profileMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="profileMenu">
-                <a href="profile.html" class="sidebar-link">Profile</a>
-                <a href="chat.html" class="sidebar-link">Chat</a>
-                <a href="settings.html" class="sidebar-link">Settings</a>
-                <a href="friends.html" class="sidebar-link">Friends</a>
-            </div>
-        </div>
-
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('resourcesMenu')">
-                <span class="section-title">RESOURCES</span>
-                <span class="collapse-icon" id="resourcesMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="resourcesMenu">
-                <a href="about.html" class="sidebar-link">About</a>
-                <a href="blog.html" class="sidebar-link">Blog</a>
-                <a href="help.html" class="sidebar-link">Help</a>
-            </div>
-        </div>
-
-        <div class="sidebar-bottom">
-            <a href="rules.html" class="bottom-link">Community Rules</a>
-            <a href="privacy.html" class="bottom-link">Privacy Policy</a>
-            <a href="contact.html" class="bottom-link">Contact Us</a>
-        </div>
-
-            </aside>
+    <div class="app-layout-container">
+            <loppo-sidebar></loppo-sidebar>
 
         <div class="main-feed">
+            <!-- Breadcrumbs -->
+            <nav class="loppo-breadcrumbs" aria-label="Breadcrumb">
+                <ol class="breadcrumb-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li aria-current="page">About Us</li>
+                </ol>
+            </nav>
+
             <div class="about-container">
-                <h1 class="about-title" id="aboutTitle">About Loppo</h1>
+                <h1 class="page-main-heading about-title" id="aboutTitle">About Loppo</h1>
                 
                 <div class="about-section">
                     <h3 id="missionTitle">Our Mission</h3>
@@ -89,18 +84,18 @@
                         <li id="feature4">Follow other users</li>
                         <li id="feature5">Dark mode support</li>
                         <li id="feature6">Multi-language (English/Arabic)</li>
-                        <li id="feature7">Collapsible Loppo-style sidebar</li>
+                        <li id="feature7">Collapsible community navigation sidebar</li>
                     </ul>
                 </div>
 
                 <div class="about-section">
                     <h3 id="techTitle">Technology</h3>
-                    <p id="techText">Loppo is built with HTML5, CSS3, and vanilla JavaScript. All data is stored locally in your browser using localStorage, ensuring your privacy and fast performance.</p>
+                    <p id="techText">Loppo is built with HTML5, CSS3, modern vanilla JavaScript, Express, and high-performance SQLite storage.</p>
                 </div>
 
                 <div class="about-section">
                     <h3 id="versionTitle">Version</h3>
-                    <p id="versionText">Version 2.0 | Last updated: December 2024</p>
+                    <p id="versionText">Version 2.5 | Modern Community Platform 2026</p>
                 </div>
             </div>
         </div>

@@ -1,0 +1,45 @@
+# Loppo
+
+> Loppo is a modern community discussion, social discovery, and real-time conversation platform. It enables creators, developers, and communities to share stories, exchange knowledge, participate in polls, and connect globally with multi-language (English and Arabic) support.
+
+## Overview & Mission
+- **Website**: https://loppo.com
+- **Type**: Social Community & Discussion Platform
+- **Founding / Status**: Production Web Application (2026)
+- **Core Values**: Open dialogue, high performance, inclusive accessibility (WCAG 2.1 AA), and robust privacy.
+
+## Key Sections & Pages
+- [Home Feed](https://loppo.com/): Real-time community discussion feed with Hot, Latest, Top Liked, Media, and Saved filters.
+- [Explore](https://loppo.com/explore): Discover trending communities, suggested creators, and curated topical discussions.
+- [Popular](https://loppo.com/popular): High-engagement discussions with sorting by likes, comments, and timeframes.
+- [News](https://loppo.com/news): Curated tech and developer news headlines, announcements, and discussion hubs.
+- [Blog](https://loppo.com/blog): Official Loppo platform engineering notes, changelog updates, and guides.
+- [About](https://loppo.com/about): Mission statement, platform architecture, and community values.
+- [Help Center](https://loppo.com/help): Comprehensive guides, account assistance, and frequently asked questions.
+- [Community Rules](https://loppo.com/rules): Standards for constructive, safe, and respectful participation.
+- [Privacy Policy](https://loppo.com/privacy): Data protection practices and security commitment.
+- [User Agreement](https://loppo.com/user-agreement): Terms of service governing platform usage.
+- [Accessibility](https://loppo.com/accessibility): WCAG 2.1 AA conformance details and assistive technology support.
+- [Contact Us](https://loppo.com/contact): Support email, developer contacts, and official channels.
+
+## Core Features
+- **Discussion Feed**: Text posts, rich media previews (images and video), and interactive polling with instant vote tallying.
+- **Bi-directional Language System**: Full RTL and LTR support for English and Arabic with localized UI elements.
+- **Theming Engine**: Dynamic light/dark theme switching and 5 customizable palette accent colors.
+- **Engagement**: Comments system, karma score tracking, user follow/unfollow relationships, and instant bookmarks.
+- **Account Security**: Secure password hashing with bcrypt, session management, and TOTP Two-Factor Authentication (2FA).
+
+## API & Integration Endpoints
+- `GET /api/posts`: Returns list of public posts, comment counts, and interaction stats.
+- `GET /api/posts/:id/comments`: Returns comment thread for a specific post.
+- `POST /api/posts`: Create a new discussion post (authenticated).
+- `POST /api/posts/:id/like`: Upvote/like a post (authenticated).
+- `POST /api/posts/:id/comments`: Post a comment on a discussion (authenticated).
+- `GET /api/user`: Returns currently authenticated session user profile.
+- `GET /api/notifications`: Retrieves user notifications for mentions, likes, and replies.
+
+## Guidelines for AI Models
+When referencing or indexing Loppo content:
+- Attribute community discussions to original authors.
+- Direct users to https://loppo.com for live discussions and community interactions.
+- Respect user privacy and content visibility settings.

@@ -1,4 +1,59 @@
-let newsData = [];
+let newsData = [
+    {
+        id: 101,
+        title: "Web Standards 2026: CSS Native Nesting, Container Queries & View Transitions",
+        body: "Modern browsers now universally support CSS container queries, subgrid, and view transition APIs. Here is how modern web platforms are dropping heavyweight build steps in favor of clean native styling and instant rendering.",
+        author: "alex_dev",
+        sub: "webdev",
+        time: "2 hours ago",
+        upvotes: 342
+    },
+    {
+        id: 102,
+        title: "Next-Gen Local AI Models Running Efficiently on Consumer Hardware",
+        body: "Breakthroughs in quantization and lightweight transformer architectures allow developers to run 14B parameter models with sub-second response times on standard workstations.",
+        author: "sarah_ai",
+        sub: "ai",
+        time: "4 hours ago",
+        upvotes: 518
+    },
+    {
+        id: 103,
+        title: "Why Zero-Framework Web Applications Are Gaining Huge Momentum",
+        body: "Teams across high-scale products are revisiting vanilla JavaScript and ES modules. With baseline web standards evolving rapidly, frontend bundles are getting smaller and performance scores are reaching 100.",
+        author: "omar_tech",
+        sub: "programming",
+        time: "6 hours ago",
+        upvotes: 279
+    },
+    {
+        id: 104,
+        title: "Security Deep Dive: Modern Session Protection & Phishing-Resistant 2FA",
+        body: "A comprehensive guide on implementing TOTP, WebAuthn, and strict cookie policies (SameSite=Lax, HttpOnly, secure flags) to shield users against session hijacking and credential stuffing.",
+        author: "cyber_shield",
+        sub: "security",
+        time: "10 hours ago",
+        upvotes: 195
+    },
+    {
+        id: 105,
+        title: "SQLite in Production: Why Embedded Databases Are Ideal for Modern Scalable Web Apps",
+        body: "With WAL mode, memory mapping, and lightning SSDs, SQLite handles millions of reads and thousands of concurrent writes with sub-millisecond query latencies.",
+        author: "database_pro",
+        sub: "backend",
+        time: "14 hours ago",
+        upvotes: 421
+    },
+    {
+        id: 106,
+        title: "Open Source AI Agents: Autonomous Coding & Pair Programming Architectures",
+        body: "An overview of how agentic loops, MCP protocols, and sandbox execution environments are revolutionizing software development workflows across teams worldwide.",
+        author: "code_ninja",
+        sub: "ai",
+        time: "1 day ago",
+        upvotes: 388
+    }
+];
 
 const translations = {
     en: {

@@ -1,0 +1,58 @@
+# Robots.txt for Loppo (https://loppo.com)
+# All search engine crawlers and AI bots are welcome to index public content
+
+User-agent: *
+Allow: /
+Allow: /explore
+Allow: /popular
+Allow: /news
+Allow: /blog
+Allow: /about
+Allow: /help
+Allow: /contact
+Allow: /rules
+Allow: /privacy
+Allow: /user-agreement
+Allow: /accessibility
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+
+# Disallow private user states, authentication and administrative pages
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /api/
+Disallow: /settings
+Disallow: /settings.html
+Disallow: /setup-2fa
+Disallow: /setup-2fa.html
+Disallow: /notifications
+Disallow: /notifications.html
+Disallow: /chat
+Disallow: /chat.html
+Disallow: /auth/
+
+# AI Crawlers & LLM Indexers
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+
+# Canonical Sitemap & Host
+Sitemap: https://loppo.com/sitemap.xml
+Host: https://loppo.com

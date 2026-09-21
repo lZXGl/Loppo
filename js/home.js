@@ -152,6 +152,39 @@ function applyFeedTranslations() {
 }
 
 /**
+ * Render pulse skeleton cards while feed is loading
+ */
+function renderSkeletonFeed() {
+    const feedContainer = document.getElementById('feedContainer');
+    if (!feedContainer) return;
+    feedContainer.innerHTML = `
+        <div class="skeleton-feed" id="skeletonFeed" aria-label="Loading posts...">
+            ${[1, 2, 3].map(() => `
+                <div class="skeleton-card">
+                    <div class="skeleton-header-row">
+                        <div class="skeleton-avatar skeleton-shimmer"></div>
+                        <div class="skeleton-meta-col">
+                            <div class="skeleton-title-bar skeleton-shimmer"></div>
+                            <div class="skeleton-sub-bar skeleton-shimmer"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton-body-lines">
+                        <div class="skeleton-line skeleton-shimmer" style="width: 95%;"></div>
+                        <div class="skeleton-line skeleton-shimmer" style="width: 80%;"></div>
+                    </div>
+                    <div class="skeleton-media-block skeleton-shimmer"></div>
+                    <div class="skeleton-footer-actions">
+                        <div class="skeleton-action-btn skeleton-shimmer"></div>
+                        <div class="skeleton-action-btn skeleton-shimmer"></div>
+                        <div class="skeleton-action-btn skeleton-shimmer"></div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+/**
  * Fetch all posts from backend API
  */
 async function fetchFeedPosts() {
@@ -159,6 +192,9 @@ async function fetchFeedPosts() {
     const badge = document.getElementById('feedCountBadge');
     
     if (badge) badge.textContent = 'Refreshing...';
+    if (!rawPostsData || rawPostsData.length === 0) {
+        renderSkeletonFeed();
+    }
 
     try {
         const res = await fetch('/api/posts');

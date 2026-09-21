@@ -23,4 +23,6 @@ async function handleLogin(event) {
     }
 }
 
-document.getElementById('loginForm')?.addEventListener('submit', handleLogin);
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('loginForm')?.addEventListener('submit', handleLogin);
+});

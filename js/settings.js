@@ -26,10 +26,13 @@ const translations = {
 document.addEventListener('DOMContentLoaded', () => {
     updateLanguage();
     initSettings();
-    loadTheme();
+    syncSettingsThemeUI();
 });
 
-document.addEventListener('languageChanged', updateLanguage);
+document.addEventListener('languageChanged', () => {
+    updateLanguage();
+    syncSettingsThemeUI();
+});
 
 function updateLanguage() {
     const t = translations[currentLanguage];
@@ -48,14 +51,15 @@ function initSettings() {
     document.querySelectorAll('.color-dot').forEach(dot => {
         dot.addEventListener('click', () => {
             const color = dot.dataset.color;
-            setAccentColor(color);
+            if (typeof setAccentColor === 'function') setAccentColor(color);
             document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
             dot.classList.add('active');
+            localStorage.setItem('accentColor', color);
             localStorage.setItem('accent-color', color);
         });
     });
 
-    const savedColor = localStorage.getItem('accent-color');
+    const savedColor = localStorage.getItem('accentColor') || localStorage.getItem('accent-color');
     if (savedColor) {
         document.querySelectorAll('.color-dot').forEach(dot => {
             if (dot.dataset.color === savedColor) dot.classList.add('active');
@@ -63,33 +67,19 @@ function initSettings() {
     }
 }
 
-function loadTheme() {
-    const saved = localStorage.getItem('theme');
+function syncSettingsThemeUI() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const btn = document.getElementById('themeBtn');
-    if (saved === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.body.setAttribute('data-theme', 'dark');
-        if (btn) btn.textContent = translations[currentLanguage].lightBtn;
-    } else {
-        if (btn) btn.textContent = translations[currentLanguage].darkBtn;
+    if (btn) {
+        btn.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
     }
 }
 
 function toggleThemeLocal() {
-    const btn = document.getElementById('themeBtn');
-    const t = translations[currentLanguage];
-    if (document.body.classList.contains('dark-mode')) {
-        document.body.classList.remove('dark-mode');
-        document.body.removeAttribute('data-theme');
-        if (btn) btn.textContent = t.darkBtn;
-        localStorage.setItem('theme', 'light');
-    } else {
-        document.body.classList.add('dark-mode');
-        document.body.setAttribute('data-theme', 'dark');
-        if (btn) btn.textContent = t.lightBtn;
-        localStorage.setItem('theme', 'dark');
+    if (window.toggleLoppoTheme) {
+        window.toggleLoppoTheme();
     }
-    showNotification('Theme changed', 'success');
+    syncSettingsThemeUI();
 }
 
 function clearAllData() {

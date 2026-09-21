@@ -1,5 +1,4 @@
-let currentLanguage = localStorage.getItem('appLanguage') || 'en';
-
+// Uses shared currentLanguage from shared.js
 const translations = {
     en: {
         helpTitle: 'Help Center',

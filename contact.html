@@ -3,80 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Loppo</title>
+    <title>Contact Us & Support - Loppo</title>
+    <meta name="description" content="Get in touch with the Loppo support team for technical help, bug reports, partnerships, and community feedback.">
+    
+    <!-- Canonical & Favicons -->
+    <link rel="canonical" href="https://loppo.com/contact">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Loppo">
+    <meta property="og:title" content="Contact Us & Support - Loppo">
+    <meta property="og:description" content="Get in touch with the Loppo support team for technical help, partnerships, and community feedback.">
+    <meta property="og:url" content="https://loppo.com/contact">
+    <meta property="og:image" content="https://loppo.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Us & Support - Loppo">
+    <meta name="twitter:description" content="Get in touch with the Loppo support team for technical help and community feedback.">
+    <meta name="twitter:image" content="https://loppo.com/assets/og-image.png">
+
+    <!-- JSON-LD BreadcrumbList & ContactPoint -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://loppo.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Contact",
+              "item": "https://loppo.com/contact"
+            }
+          ]
+        },
+        {
+          "@type": "LocalBusiness",
+          "name": "Loppo Support",
+          "url": "https://loppo.com/contact",
+          "telephone": "+1-800-555-0199",
+          "email": "support@loppo.com",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "100 Community Plaza",
+            "addressLocality": "San Francisco",
+            "addressRegion": "CA",
+            "postalCode": "94105",
+            "addressCountry": "US"
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/contact.css">
+    <script src="js/theme.js"></script>
+    <script src="js/components/loppo-ui.js"></script>
 </head>
 <body>
 
-<nav>
-    <button class="hamburger"><span></span><span></span><span></span></button>
-    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
-    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
-    <div class="nav-actions">
-        <button class="btn-lang" id="langBtn">العربية</button>
-        <div onclick="location.href='notifications.html'" style="cursor:pointer;font-size:1.2em;" title="Notifications"></div>
-        <button class="btn-primary" onclick="location.href='login.html'" id="loginBtn">Log In</button>
-        <div id="user-avatar" style="cursor:pointer;display:none;" onclick="location.href='profile.html'">
-            <img id="nav-avatar" src="" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
-        </div>
-    </div>
-</nav>
+<loppo-header></loppo-header>
 
-<div class="container">
-        <aside class="sidebar-loppo">
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('mainMenu')">
-                <span class="section-title">MAIN</span>
-                <span class="collapse-icon" id="mainMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="mainMenu">
-                <a href="index.html" class="sidebar-link">Home</a>
-                <a href="popular.html" class="sidebar-link">Popular</a>
-                <a href="news.html" class="sidebar-link">News</a>
-                <a href="explore.html" class="sidebar-link">Explore</a>
-            </div>
-        </div>
-
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('profileMenu')">
-                <span class="section-title">PROFILE</span>
-                <span class="collapse-icon" id="profileMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="profileMenu">
-                <a href="profile.html" class="sidebar-link">Profile</a>
-                <a href="chat.html" class="sidebar-link">Chat</a>
-                <a href="settings.html" class="sidebar-link">Settings</a>
-                <a href="friends.html" class="sidebar-link">Friends</a>
-            </div>
-        </div>
-
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('resourcesMenu')">
-                <span class="section-title">RESOURCES</span>
-                <span class="collapse-icon" id="resourcesMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="resourcesMenu">
-                <a href="about.html" class="sidebar-link">About</a>
-                <a href="blog.html" class="sidebar-link">Blog</a>
-                <a href="help.html" class="sidebar-link">Help</a>
-            </div>
-        </div>
-
-        <div class="sidebar-bottom">
-            <a href="rules.html" class="bottom-link">Community Rules</a>
-            <a href="privacy.html" class="bottom-link">Privacy Policy</a>
-            <a href="contact.html" class="bottom-link">Contact Us</a>
-        </div>
-
-        </aside>
+<div class="app-layout-container">
+        <loppo-sidebar></loppo-sidebar>
 
     <div class="main-feed">
+        <!-- Breadcrumbs -->
+        <nav class="loppo-breadcrumbs" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Contact</li>
+            </ol>
+        </nav>
+
         <div class="contact-container">
             <div class="contact-header">
-                <h1 id="contactTitle">Contact Us</h1>
-                <p id="contactSubtitle">We would love to hear from you Fill out the form and we will get back to you within 24 hours.</p>
+                <h1 id="contactTitle" class="page-main-heading">Contact Us</h1>
+                <p id="contactSubtitle">We would love to hear from you. Fill out the form and we will get back to you within 24 hours.</p>
             </div>
             
             <form id="contactForm" onsubmit="submitContact(event)">

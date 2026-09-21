@@ -3,7 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Chat - Loppo</title>
+    <title>Direct Messages & Community Chat - Loppo</title>
+    <meta name="description" content="Connect and chat directly in real-time with creators and community members on Loppo.">
+    
+    <!-- Canonical & Favicons -->
+    <link rel="canonical" href="https://loppo.com/chat">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Loppo">
+    <meta property="og:title" content="Direct Messages & Community Chat - Loppo">
+    <meta property="og:description" content="Connect and chat directly in real-time with creators and community members on Loppo.">
+    <meta property="og:url" content="https://loppo.com/chat">
+    <meta property="og:image" content="https://loppo.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Direct Messages & Community Chat - Loppo">
+    <meta name="twitter:description" content="Connect and chat directly in real-time with creators and community members on Loppo.">
+    <meta name="twitter:image" content="https://loppo.com/assets/og-image.png">
+
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://loppo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chat",
+          "item": "https://loppo.com/chat"
+        }
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <style>
@@ -52,10 +94,10 @@
             gap: 12px;
         }
         .message-bubble {
-            max-width: 68%;
-            padding: 10px 16px;
+            max-width: 70%;
+            padding: 10px 14px;
             border-radius: var(--radius-lg);
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             line-height: 1.4;
             word-break: break-word;
         }
@@ -114,100 +156,29 @@
             }
         }
     </style>
+    <script src="js/components/loppo-ui.js"></script>
+    <script src="js/theme.js"></script>
 </head>
 <body>
 
     <!-- Unified Header -->
-    <header class="loppo-header" role="banner">
-        <div class="header-container">
-            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="sidebarLoppo">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <a href="index.html" class="brand-logo" aria-label="Loppo Home">
-                <div class="brand-icon">L</div>
-                <h1 class="brand-title">Loppo</h1>
-            </a>
-
-            <div class="header-actions">
-                <button type="button" class="btn-icon-nav" id="themeToggleBtn" aria-label="Toggle Theme">
-                    <span id="themeIcon">🌓</span>
-                </button>
-                <button type="button" class="btn-pill btn-pill-outline" id="langToggleBtn" aria-label="Change Language">
-                    🌐 <span id="langBtnText">العربية</span>
-                </button>
-                <a href="notifications.html" class="btn-icon-nav" aria-label="Notifications">
-                    🔔
-                </a>
-                <div id="authNavContainer">
-                    <a href="login.html" class="btn-pill btn-pill-primary" id="navLoginBtn">Log In</a>
-                    <a href="profile.html" class="user-avatar-btn" id="navUserAvatar" style="display:none;" aria-label="My Profile">
-                        <img id="navAvatarImg" class="user-avatar-img" src="" alt="User Avatar">
-                        <span id="navAvatarFallback" class="user-avatar-initials" style="display:none;">U</span>
-                        <span id="navUserName" style="font-weight:600;font-size:0.85rem;">Account</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+    <loppo-header></loppo-header>
 
     <div class="app-layout-container" style="max-width:1440px;">
         <!-- LEFT SIDEBAR -->
-        <aside class="loppo-sidebar-left" id="sidebarLoppo" aria-label="Main Navigation">
-            <div class="sidebar-scrollable-content">
-                <nav class="sidebar-nav-section">
-                    <button type="button" class="nav-section-toggle" data-toggle="mainMenu" aria-expanded="true">
-                        <span class="section-title-text" id="t-mainMenu">MAIN</span>
-                        <span class="nav-section-chevron">▼</span>
-                    </button>
-                    <ul class="nav-links-list" id="mainMenu">
-                        <li><a href="index.html" class="sidebar-nav-link"><span class="nav-link-icon">🏠</span><span id="t-home">Home</span></a></li>
-                        <li><a href="popular.html" class="sidebar-nav-link"><span class="nav-link-icon">🔥</span><span id="t-popular">Popular</span></a></li>
-                        <li><a href="news.html" class="sidebar-nav-link"><span class="nav-link-icon">📰</span><span id="t-news">News</span></a></li>
-                        <li><a href="explore.html" class="sidebar-nav-link"><span class="nav-link-icon">🧭</span><span id="t-explore">Explore</span></a></li>
-                    </ul>
-                </nav>
-
-                <nav class="sidebar-nav-section">
-                    <button type="button" class="nav-section-toggle" data-toggle="profileMenu" aria-expanded="true">
-                        <span class="section-title-text" id="t-profileMenu">PROFILE</span>
-                        <span class="nav-section-chevron">▼</span>
-                    </button>
-                    <ul class="nav-links-list" id="profileMenu">
-                        <li><a href="profile.html" class="sidebar-nav-link"><span class="nav-link-icon">👤</span><span id="t-profile">Profile</span></a></li>
-                        <li><a href="chat.html" class="sidebar-nav-link active"><span class="nav-link-icon">💬</span><span id="t-chat">Chat</span></a></li>
-                        <li><a href="friends.html" class="sidebar-nav-link"><span class="nav-link-icon">👥</span><span id="t-friends">Friends</span></a></li>
-                        <li><a href="settings.html" class="sidebar-nav-link"><span class="nav-link-icon">⚙️</span><span id="t-settings">Settings</span></a></li>
-                    </ul>
-                </nav>
-
-                <nav class="sidebar-nav-section">
-                    <button type="button" class="nav-section-toggle" data-toggle="resourcesMenu" aria-expanded="true">
-                        <span class="section-title-text" id="t-resourcesMenu">RESOURCES</span>
-                        <span class="nav-section-chevron">▼</span>
-                    </button>
-                    <ul class="nav-links-list" id="resourcesMenu">
-                        <li><a href="about.html" class="sidebar-link"><span class="nav-link-icon">ℹ️</span><span id="t-about">About</span></a></li>
-                        <li><a href="blog.html" class="sidebar-link"><span class="nav-link-icon">✍️</span><span id="t-blog">Blog</span></a></li>
-                        <li><a href="help.html" class="sidebar-link"><span class="nav-link-icon">❓</span><span id="t-help">Help</span></a></li>
-                    </ul>
-                </nav>
-            </div>
-
-            <footer class="sidebar-footer-links">
-                <a href="rules.html" class="footer-link-subtle" id="t-rules">Community Rules</a>
-                <a href="privacy.html" class="footer-link-subtle" id="t-privacy">Privacy Policy</a>
-                <a href="user-agreement.html" class="footer-link-subtle" id="t-agreement">User Agreement</a>
-                <a href="contact.html" class="footer-link-subtle" id="t-contact">Contact Us</a>
-            </footer>
-        </aside>
+        <loppo-sidebar></loppo-sidebar>
 
         <!-- CENTER MAIN: Chat Box -->
         <main class="loppo-feed-main" style="max-width:none;flex:1;" role="main">
+            <!-- Breadcrumbs -->
+            <nav class="loppo-breadcrumbs" aria-label="Breadcrumb" style="margin-bottom:12px;">
+                <ol class="breadcrumb-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li aria-current="page">Chat</li>
+                </ol>
+            </nav>
+            <h1 class="page-main-heading visually-hidden">Direct Messages & Community Chat</h1>
+
             <div class="chat-layout-box">
                 <div class="chat-users-panel" id="userList">
                     <div style="padding:20px;color:var(--text-muted);font-size:0.9rem;">Loading contacts...</div>
@@ -244,7 +215,7 @@
         </a>
     </nav>
 
-    <div class="loppo-toast-container" id="toastContainer" aria-live="polite"></div>
+    
 
     <script src="js/shared.js"></script>
     <script>
@@ -269,7 +240,7 @@
 
                 list.innerHTML = otherUsers.map(u => `
                     <div class="chat-contact-item" onclick="selectUser(${u.id}, '${escapeHtml(u.displayName || u.username)}')">
-                        <img src="${u.avatar || 'https://via.placeholder.com/38'}" alt="Avatar">
+                        <img src="${u.avatar || '/assets/default-avatar.svg'}" alt="Contact avatar for ${escapeHtml(u.displayName || u.username)}">
                         <span style="font-weight:600;font-size:0.9rem;color:var(--text-primary);">${escapeHtml(u.displayName || u.username)}</span>
                     </div>
                 `).join('');

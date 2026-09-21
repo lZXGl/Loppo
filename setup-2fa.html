@@ -3,17 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Setup 2FA - Loppo</title>
+    <title>Two-Factor Authentication Setup - Loppo</title>
+    <meta name="description" content="Secure your Loppo account with Google Authenticator or Authy two-factor authentication (2FA).">
+    
+    <!-- Canonical & Favicons -->
+    <link rel="canonical" href="https://loppo.com/setup-2fa">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Loppo">
+    <meta property="og:title" content="Two-Factor Authentication Setup - Loppo">
+    <meta property="og:description" content="Secure your Loppo account with two-factor authentication.">
+    <meta property="og:url" content="https://loppo.com/setup-2fa">
+    <meta property="og:image" content="https://loppo.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Two-Factor Authentication Setup - Loppo">
+    <meta name="twitter:description" content="Secure your Loppo account with two-factor authentication.">
+    <meta name="twitter:image" content="https://loppo.com/assets/og-image.png">
+
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://loppo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Settings",
+          "item": "https://loppo.com/settings"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "2FA Setup",
+          "item": "https://loppo.com/setup-2fa"
+        }
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="css/style.css">
     <style>
         .setup-container {
             max-width: 500px;
-            margin: 60px auto;
-            background: var(--nav-bg);
+            margin: 20px auto 60px;
+            background: var(--bg-surface);
             padding: 40px;
             border-radius: 20px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-subtle);
             text-align: center;
+            box-shadow: var(--shadow-sm);
         }
         #qrCode {
             margin: 20px auto;
@@ -25,28 +74,33 @@
             width: 100%;
             padding: 12px;
             margin: 20px 0;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-subtle);
             border-radius: 10px;
             text-align: center;
             font-size: 1.5em;
             letter-spacing: 5px;
+            background: var(--bg-surface-alt);
+            color: var(--text-primary);
         }
     </style>
+    <script src="js/theme.js"></script>
+    <script src="js/components/loppo-ui.js"></script>
 </head>
 <body>
-<nav>
-    <button class="hamburger"><span></span><span></span><span></span></button>
-    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
-    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
-    <div class="nav-actions">
-        <button class="btn-lang" id="langBtn">العربية</button>
-    </div>
-</nav>
-    <div class="setup-container">
-        <h1>Enable Two-Factor Authentication</h1>
-        <p>Scan the QR code with your authenticator app (like Google Authenticator or Authy).</p>
+    <!-- Breadcrumbs -->
+    <nav class="loppo-breadcrumbs" aria-label="Breadcrumb" style="max-width:500px;margin:24px auto 0;">
+        <ol class="breadcrumb-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li aria-current="page">2FA Setup</li>
+        </ol>
+    </nav>
+
+    <main class="setup-container" role="main">
+        <h1 class="page-main-heading">Enable Two-Factor Authentication</h1>
+        <p style="color:var(--text-secondary);font-size:0.95rem;">Scan the QR code with your authenticator app (Google Authenticator, Authy, or 1Password).</p>
         <div id="qrCodeContainer">
-            <img id="qrCode" src="" alt="QR Code">
+            <img id="qrCode" src="" alt="Two-factor authentication QR code for authenticator app enrollment">
         </div>
         <p>Enter the 6-digit code from your app to verify.</p>
         <input type="text" id="token" class="token-input" placeholder="000000" maxlength="6">

@@ -30,4 +30,6 @@ async function handleSignup(event) {
     }
 }
 
-document.getElementById('signupForm').addEventListener('submit', handleSignup);
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('signupForm')?.addEventListener('submit', handleSignup);
+});

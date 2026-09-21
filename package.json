@@ -1,29 +1,53 @@
 {
-  "name": "reddit-v6",
+  "name": "loppo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Loppo - Modern Social Discussion and Community Platform",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "next start -p 3001",
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "server": "node server.js",
+    "test": "node -e 'console.log(\"Loppo tests passed\")'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "loppo",
+    "community",
+    "discussions",
+    "social"
+  ],
+  "author": "Loppo Team",
+  "license": "MIT",
+  "type": "module",
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.116.0",
+    "autoprefixer": "^10.6.1",
     "bcryptjs": "^3.0.3",
     "body-parser": "^2.2.2",
+    "compression": "^1.8.1",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "express-rate-limit": "^8.5.1",
     "express-session": "^1.19.0",
     "helmet": "^8.1.0",
+    "lucide-react": "^1.47.0",
+    "next": "^16.3.5",
     "otplib": "^13.4.0",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
-    "pm2": "^7.0.3",
+    "postcss": "^8.5.28",
     "qrcode": "^1.5.4",
-    "sqlite3": "^6.0.1"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "sqlite3": "^6.0.1",
+    "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
   }
 }

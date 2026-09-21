@@ -1,5 +1,4 @@
-let currentLanguage = localStorage.getItem('appLanguage') || 'en';
-
+// Uses shared currentLanguage from shared.js
 const translations = {
     en: {
         accessibilityTitle: 'Accessibility at Loppo',
@@ -15,18 +14,18 @@ const translations = {
         feature5: 'High contrast color options',
         feature6: 'Text resizing support',
         helpTitle: 'Need Help?',
-        helpText: 'If you experience any accessibility issues, please contact us at accessibility@Loppo.com or visit our Contact page.',
+        helpText: 'If you experience any accessibility issues, please contact us at accessibility@loppo.com or visit our Contact page.',
         quickLinksTitle: 'Quick Links',
         contactLinkSidebar: 'Contact Us',
         helpLinkSidebar: 'Help Center',
         rulesLinkSidebar: 'Community Rules'
     },
     ar: {
-        accessibilityTitle: 'إمكانية الوصول في المنتدى',
+        accessibilityTitle: 'إمكانية الوصول في لوبو',
         accessibilitySubtitle: 'نحن ملتزمون بجعل منصتنا في متناول الجميع.',
         wcagBadge: 'متوافق مع WCAG 2.1',
         commitmentTitle: 'التزامنا',
-        commitmentText: 'تم تصميم المنتدى ليكون في متناول الأشخاص ذوي الإعاقة. نحن نتبع إرشادات الوصول إلى محتوى الويب (WCAG) 2.1 بمستوى AA لضمان أن منصتنا قابلة للاستخدام من قبل الجميع.',
+        commitmentText: 'تم تصميم لوبو ليكون في متناول الأشخاص ذوي الإعاقة. نحن نتبع إرشادات الوصول إلى محتوى الويب (WCAG) 2.1 بمستوى AA لضمان أن منصتنا قابلة للاستخدام من قبل الجميع.',
         featuresTitle: 'ميزات إمكانية الوصول',
         feature1: 'متوافق مع قارئات الشاشة',
         feature2: 'دعم كامل للتنقل عبر لوحة المفاتيح',

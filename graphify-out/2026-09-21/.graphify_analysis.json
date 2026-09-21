@@ -1,0 +1,518 @@
+{
+  "communities": {
+    "0": [
+      "ref_express",
+      "ref_path",
+      "ref_supabase_supabase_js",
+      "src_db_index",
+      "src_db_index_createclient",
+      "src_db_index_db",
+      "src_db_index_path",
+      "src_db_index_sqlite3",
+      "src_middleware_auth",
+      "src_middleware_auth_isadmin",
+      "src_middleware_auth_isauthenticated",
+      "src_routes_admin",
+      "src_routes_admin_db",
+      "src_routes_admin_express",
+      "src_routes_admin_isadmin",
+      "src_routes_admin_path",
+      "src_routes_admin_router",
+      "src_routes_comments",
+      "src_routes_comments_db",
+      "src_routes_comments_express",
+      "src_routes_comments_isauthenticated",
+      "src_routes_comments_router",
+      "src_routes_messages",
+      "src_routes_messages_db",
+      "src_routes_messages_express",
+      "src_routes_messages_isauthenticated",
+      "src_routes_messages_router",
+      "src_routes_notifications",
+      "src_routes_notifications_db",
+      "src_routes_notifications_express",
+      "src_routes_notifications_isauthenticated",
+      "src_routes_notifications_router",
+      "src_routes_posts",
+      "src_routes_posts_db",
+      "src_routes_posts_express",
+      "src_routes_posts_isauthenticated_isadmin",
+      "src_routes_posts_router",
+      "src_routes_users",
+      "src_routes_users_db",
+      "src_routes_users_express",
+      "src_routes_users_isauthenticated",
+      "src_routes_users_router"
+    ],
+    "1": [
+      "js_home",
+      "js_home_applyfeedtranslations",
+      "js_home_attachfeedinteractivity",
+      "js_home_calculatereadingtime",
+      "js_home_feedtranslations",
+      "js_home_fetchfeedposts",
+      "js_home_formatpostbodywithhashtags",
+      "js_home_getprocessedposts",
+      "js_home_handleaddcomment",
+      "js_home_handledeletepost",
+      "js_home_handleeditpost",
+      "js_home_handlefollowuser",
+      "js_home_handlehidepost",
+      "js_home_handlepostlike",
+      "js_home_handlesharepost",
+      "js_home_loadcommentsthread",
+      "js_home_openmodalimage",
+      "js_home_rawpostsdata",
+      "js_home_renderfeed",
+      "js_home_savedpostids",
+      "js_home_setupcomposerevents",
+      "js_home_setupfeedfilterevents",
+      "js_home_setupmodalevents",
+      "js_home_submitpostcomposer",
+      "js_home_togglebookmarkpost",
+      "js_home_togglecommentssection"
+    ],
+    "2": [
+      "js_explore",
+      "js_explore_blockedusers",
+      "js_explore_closeallmodals",
+      "js_explore_closeblockmodal",
+      "js_explore_closereportmodal",
+      "js_explore_confirmblock",
+      "js_explore_filterbycategory",
+      "js_explore_filterusers",
+      "js_explore_friendslist",
+      "js_explore_getfilteredusers",
+      "js_explore_handlesearchparam",
+      "js_explore_isfollowing",
+      "js_explore_isuserblocked",
+      "js_explore_loadusers",
+      "js_explore_openblockmodal",
+      "js_explore_openreportmodal",
+      "js_explore_renderusers",
+      "js_explore_reportedusers",
+      "js_explore_saveblockedusers",
+      "js_explore_savereportedusers",
+      "js_explore_submitreport",
+      "js_explore_togglefollow",
+      "js_explore_translations",
+      "js_explore_updatelanguage",
+      "js_explore_usersdata"
+    ],
+    "3": [
+      "ref_fs",
+      "server",
+      "server_app",
+      "server_bcrypt",
+      "server_bodyparser",
+      "server_compression",
+      "server_cors",
+      "server_db",
+      "server_express",
+      "server_fs",
+      "server_helmet",
+      "server_limiter",
+      "server_passport",
+      "server_path",
+      "server_port_session_secret_site_url_domain_ratelimitconfig",
+      "server_publicpages",
+      "server_ratelimit",
+      "server_session",
+      "src_config_index",
+      "src_config_index_domain",
+      "src_config_index_port",
+      "src_config_index_ratelimitconfig",
+      "src_config_index_session_secret",
+      "src_config_index_site_url"
+    ],
+    "4": [
+      "js_shared",
+      "js_shared_applylanguagesettings",
+      "js_shared_escapehtml",
+      "js_shared_getinitials",
+      "js_shared_hextorgb",
+      "js_shared_initbacktotop",
+      "js_shared_initglobalsearch",
+      "js_shared_initkeyboardshortcuts",
+      "js_shared_loadaccentcolor",
+      "js_shared_loadtheme",
+      "js_shared_loadusercontext",
+      "js_shared_opensharemodal",
+      "js_shared_openshortcutsmodal",
+      "js_shared_setaccentcolor",
+      "js_shared_setupsharedeventlisteners",
+      "js_shared_sharedtranslations",
+      "js_shared_shownotification",
+      "js_shared_togglelanguage",
+      "js_shared_toggletheme"
+    ],
+    "5": [
+      "package",
+      "package_author",
+      "package_description",
+      "package_keywords",
+      "package_license",
+      "package_main",
+      "package_name",
+      "package_type",
+      "package_version",
+      "ref_body_parser",
+      "ref_compression",
+      "ref_cors",
+      "ref_express_rate_limit",
+      "ref_express_session",
+      "ref_helmet",
+      "ref_passport_google_oauth20",
+      "ref_passport_local",
+      "ref_pm2",
+      "ref_sqlite3"
+    ],
+    "6": [
+      "js_popular",
+      "js_popular_applyfilterfromurl",
+      "js_popular_applyfiltersandsort",
+      "js_popular_closemodal",
+      "js_popular_filterbytopic",
+      "js_popular_getfilteredposts",
+      "js_popular_loadposts",
+      "js_popular_posts",
+      "js_popular_renderposts",
+      "js_popular_setfilter",
+      "js_popular_setsort",
+      "js_popular_sortposts",
+      "js_popular_togglelikefrompopular",
+      "js_popular_translations",
+      "js_popular_updatelanguage",
+      "js_popular_urlparams",
+      "js_popular_viewfullmedia"
+    ],
+    "7": [
+      "js_post",
+      "js_post_addcomment",
+      "js_post_closereportpostmodal",
+      "js_post_deletepost",
+      "js_post_editpost",
+      "js_post_loadpost",
+      "js_post_openreportpostmodal",
+      "js_post_postid",
+      "js_post_renderpost",
+      "js_post_reportedposts",
+      "js_post_showtoast",
+      "js_post_submitpostreport",
+      "js_post_togglelike",
+      "js_post_togglemenu",
+      "js_post_translations",
+      "js_post_updatelanguage",
+      "js_post_urlparams"
+    ],
+    "8": [
+      "package_dependencies",
+      "package_dependencies_bcryptjs",
+      "package_dependencies_body_parser",
+      "package_dependencies_compression",
+      "package_dependencies_cors",
+      "package_dependencies_express",
+      "package_dependencies_express_rate_limit",
+      "package_dependencies_express_session",
+      "package_dependencies_helmet",
+      "package_dependencies_otplib",
+      "package_dependencies_passport",
+      "package_dependencies_passport_google_oauth20",
+      "package_dependencies_passport_local",
+      "package_dependencies_pm2",
+      "package_dependencies_qrcode",
+      "package_dependencies_sqlite3",
+      "package_dependencies_supabase_supabase_js"
+    ],
+    "9": [
+      "ref_bcryptjs",
+      "ref_otplib",
+      "ref_passport",
+      "ref_qrcode",
+      "src_routes_auth",
+      "src_routes_auth_bcrypt",
+      "src_routes_auth_db",
+      "src_routes_auth_express",
+      "src_routes_auth_isauthenticated",
+      "src_routes_auth_passport",
+      "src_routes_auth_qrcode",
+      "src_routes_auth_router"
+    ],
+    "10": [
+      "generate_assets",
+      "generate_assets_create_gradient_surface",
+      "generate_assets_draw_rounded_rect",
+      "generate_assets_generate_icon",
+      "generate_assets_generate_og_image",
+      "generate_assets_main",
+      "os",
+      "pil",
+      "re",
+      "replace_html",
+      "update_css"
+    ],
+    "11": [
+      "js_friends",
+      "js_friends_closechat",
+      "js_friends_friendslist",
+      "js_friends_loadfriends",
+      "js_friends_openchat",
+      "js_friends_renderfriends",
+      "js_friends_savefriends",
+      "js_friends_sendmessage",
+      "js_friends_translations",
+      "js_friends_unfollowfriend",
+      "js_friends_updatelanguage"
+    ],
+    "12": [
+      "js_news",
+      "js_news_joincommunity",
+      "js_news_newsdata",
+      "js_news_performnewssearch",
+      "js_news_renderposts",
+      "js_news_searchtopic",
+      "js_news_toggledownvote",
+      "js_news_toggleupvote",
+      "js_news_translations",
+      "js_news_updatelanguage"
+    ],
+    "13": [
+      "js_components_loppo_ui",
+      "js_components_loppo_ui_loppoheader",
+      "js_components_loppo_ui_loppoheader_connectedcallback",
+      "js_components_loppo_ui_loppopostmodal",
+      "js_components_loppo_ui_loppopostmodal_connectedcallback",
+      "js_components_loppo_ui_lopporightrail",
+      "js_components_loppo_ui_lopporightrail_connectedcallback",
+      "js_components_loppo_ui_lopposidebar",
+      "js_components_loppo_ui_lopposidebar_connectedcallback"
+    ],
+    "14": [
+      "js_notifications",
+      "js_notifications_fetchnotifications",
+      "js_notifications_filternotifications",
+      "js_notifications_filtertype",
+      "js_notifications_markallasread",
+      "js_notifications_notifications",
+      "js_notifications_rendernotifs",
+      "js_notifications_translations",
+      "js_notifications_updatelanguage"
+    ],
+    "15": [
+      "js_profile",
+      "js_profile_editbio",
+      "js_profile_init",
+      "js_profile_loaduserposts",
+      "js_profile_updateprofile",
+      "js_profile_updateprofileui",
+      "js_profile_uploadavatar",
+      "js_profile_uploadcover",
+      "js_profile_viewfullmedia"
+    ],
+    "16": [
+      "js_settings",
+      "js_settings_clearalldata",
+      "js_settings_exportdata",
+      "js_settings_importdata",
+      "js_settings_initsettings",
+      "js_settings_syncsettingsthemeui",
+      "js_settings_togglethemelocal",
+      "js_settings_translations",
+      "js_settings_updatelanguage"
+    ],
+    "17": [
+      "js_admin",
+      "js_admin_deletepost",
+      "js_admin_deleteuser",
+      "js_admin_loadposts",
+      "js_admin_loadstats",
+      "js_admin_loadusers",
+      "js_admin_translations",
+      "js_admin_updatelanguage"
+    ],
+    "18": [
+      "js_user_agreement",
+      "js_user_agreement_acceptagreement",
+      "js_user_agreement_declineagreement",
+      "js_user_agreement_scrolltosection",
+      "js_user_agreement_translations",
+      "js_user_agreement_updatepagecontent"
+    ],
+    "19": [
+      "js_contact",
+      "js_contact_submitcontact",
+      "js_contact_translations",
+      "js_contact_updatepagecontent"
+    ],
+    "20": [
+      "js_help",
+      "js_help_toggleanswer",
+      "js_help_translations",
+      "js_help_updatepagecontent"
+    ],
+    "21": [
+      "package_scripts",
+      "package_scripts_dev",
+      "package_scripts_start",
+      "package_scripts_test"
+    ],
+    "22": [
+      "js_about",
+      "js_about_translations",
+      "js_about_updatepagecontent"
+    ],
+    "23": [
+      "js_accessibility",
+      "js_accessibility_translations",
+      "js_accessibility_updatepagecontent"
+    ],
+    "24": [
+      "js_blog",
+      "js_blog_translations",
+      "js_blog_updatepagecontent"
+    ],
+    "25": [
+      "js_privacy",
+      "js_privacy_translations",
+      "js_privacy_updatepagecontent"
+    ],
+    "26": [
+      "js_rules",
+      "js_rules_translations",
+      "js_rules_updatepagecontent"
+    ],
+    "27": [
+      "js_login",
+      "js_login_handlelogin"
+    ],
+    "28": [
+      "js_signup",
+      "js_signup_handlesignup"
+    ],
+    "29": [
+      "js_theme"
+    ]
+  },
+  "cohesion": {
+    "0": 0.07549361207897794,
+    "1": 0.15076923076923077,
+    "2": 0.13,
+    "3": 0.08695652173913043,
+    "4": 0.19883040935672514,
+    "5": 0.10526315789473684,
+    "6": 0.17647058823529413,
+    "7": 0.18382352941176472,
+    "8": 0.11764705882352941,
+    "9": 0.16666666666666666,
+    "10": 0.2727272727272727,
+    "11": 0.2545454545454545,
+    "12": 0.24444444444444444,
+    "13": 0.2222222222222222,
+    "14": 0.3333333333333333,
+    "15": 0.3888888888888889,
+    "16": 0.2222222222222222,
+    "17": 0.39285714285714285,
+    "18": 0.3333333333333333,
+    "19": 0.5,
+    "20": 0.5,
+    "21": 0.5,
+    "22": 0.6666666666666666,
+    "23": 0.6666666666666666,
+    "24": 0.6666666666666666,
+    "25": 0.6666666666666666,
+    "26": 0.6666666666666666,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0
+  },
+  "gods": [
+    {
+      "id": "js_home_attachfeedinteractivity",
+      "label": "attachFeedInteractivity()",
+      "degree": 12
+    },
+    {
+      "id": "src_middleware_auth_isauthenticated",
+      "label": "isAuthenticated()",
+      "degree": 10
+    },
+    {
+      "id": "js_home_renderfeed",
+      "label": "renderFeed()",
+      "degree": 9
+    },
+    {
+      "id": "js_popular_applyfiltersandsort",
+      "label": "applyFiltersAndSort()",
+      "degree": 9
+    },
+    {
+      "id": "ref_express",
+      "label": "express",
+      "degree": 9
+    },
+    {
+      "id": "js_explore_renderusers",
+      "label": "renderUsers()",
+      "degree": 8
+    },
+    {
+      "id": "js_notifications_rendernotifs",
+      "label": "renderNotifs()",
+      "degree": 7
+    },
+    {
+      "id": "js_shared_setupsharedeventlisteners",
+      "label": "setupSharedEventListeners()",
+      "degree": 7
+    },
+    {
+      "id": "js_post_showtoast",
+      "label": "showToast()",
+      "degree": 6
+    },
+    {
+      "id": "js_home_fetchfeedposts",
+      "label": "fetchFeedPosts()",
+      "degree": 5
+    }
+  ],
+  "surprises": [],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `express` connect `db/index.js` to `routes/auth.js`, `server.js`, `package.json`?",
+      "why": "High betweenness centrality (0.034) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `dependencies` to `package.json`?",
+      "why": "High betweenness centrality (0.032) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `scripts` connect `scripts` to `package.json`?",
+      "why": "High betweenness centrality (0.006) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `{ createClient }`, `path`, `sqlite3` to the rest of the system?",
+      "why": "113 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `db/index.js` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.07549361207897794 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `explore.js` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.13 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `server.js` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

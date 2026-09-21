@@ -100,8 +100,12 @@ function renderPost() {
     const userLiked = currentUserName && Array.isArray(currentPost.likedBy) && currentPost.likedBy.includes(currentUserName);
     const isCurrentUser = user && (currentPost.userId === user.id || currentPost.author === currentUserName);
 
+    // Update Page Title and Heading
+    const snippet = currentPost.text ? currentPost.text.slice(0, 60) : 'Discussion Thread';
+    document.title = `${snippet} - Loppo`;
+
     let mediaHtml = '';
-    if (currentPost.image) mediaHtml = `<img src="${escapeHtml(currentPost.image)}" class="post-image" alt="Post image">`;
+    if (currentPost.image) mediaHtml = `<img src="${escapeHtml(currentPost.image)}" class="post-image" alt="Discussion image shared by ${escapeHtml(currentPost.author)}">`;
     else if (currentPost.video) mediaHtml = `<video src="${escapeHtml(currentPost.video)}" class="post-video" controls></video>`;
 
     const comments = currentPost.comments || [];
@@ -117,17 +121,18 @@ function renderPost() {
             </div>`).join('');
 
     let menuHtml = isCurrentUser
-        ? `<div class="post-menu"><button class="menu-btn" onclick="toggleMenu(this)">...</button>
+        ? `<div class="post-menu"><button class="menu-btn" onclick="toggleMenu(this)">•••</button>
             <div class="menu-dropdown">
                 <button onclick="editPost()">${t.edit}</button>
                 <button onclick="deletePost()" class="delete-btn">${t.delete}</button>
             </div></div>`
-        : `<div class="post-menu"><button class="menu-btn" onclick="toggleMenu(this)">...</button>
+        : `<div class="post-menu"><button class="menu-btn" onclick="toggleMenu(this)">•••</button>
             <div class="menu-dropdown">
                 <button onclick="openReportPostModal()" class="report-post-btn">${t.reportPost}</button>
             </div></div>`;
 
     container.innerHTML = `
+        <h1 class="page-main-heading">${escapeHtml(snippet)}</h1>
         <div class="post-header">
             <div class="post-user-info">
                 <div class="post-avatar">${(currentPost.author || 'U').charAt(0).toUpperCase()}</div>
@@ -145,6 +150,7 @@ function renderPost() {
                 <span id="likeCount">${currentPost.likes || 0}</span> ${t.likes}
             </span>
             <span>${comments.length} ${t.comments}</span>
+            <button type="button" class="btn-pill btn-pill-outline" style="margin-left:auto;padding:4px 12px;font-size:0.8rem;" onclick="if(typeof openShareModal==='function'){openShareModal({title:'Loppo Discussion', text:'${escapeHtml(snippet)}', url:window.location.href});}else{navigator.clipboard.writeText(window.location.href);showToast('Link copied!','success');}">🔗 Share</button>
         </div>
         <div class="comments-section">
             <h3>${t.comments} (${comments.length})</h3>

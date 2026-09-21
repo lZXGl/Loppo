@@ -3,9 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In - Loppo</title>
+    <title>Sign In to Your Account - Loppo</title>
+    <meta name="description" content="Sign in to your Loppo account to participate in conversations, share updates, and follow top creators.">
+    
+    <!-- Canonical & Favicons -->
+    <link rel="canonical" href="https://loppo.com/login">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Loppo">
+    <meta property="og:title" content="Sign In to Your Account - Loppo">
+    <meta property="og:description" content="Sign in to your Loppo account to participate in discussions and follow top creators.">
+    <meta property="og:url" content="https://loppo.com/login">
+    <meta property="og:image" content="https://loppo.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sign In to Your Account - Loppo">
+    <meta name="twitter:description" content="Sign in to your Loppo account to participate in discussions and follow top creators.">
+    <meta name="twitter:image" content="https://loppo.com/assets/og-image.png">
+
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://loppo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Log In",
+          "item": "https://loppo.com/login"
+        }
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
+    <script src="js/components/loppo-ui.js"></script>
+    <script src="js/theme.js"></script>
 </head>
 <body>
 
@@ -14,7 +58,7 @@
         <div class="header-container">
             <a href="index.html" class="brand-logo" aria-label="Loppo Home">
                 <div class="brand-icon">L</div>
-                <h1 class="brand-title">Loppo</h1>
+                <span class="brand-title">Loppo</span>
             </a>
 
             <div class="header-actions">
@@ -28,9 +72,17 @@
         </div>
     </header>
 
+    <!-- Breadcrumbs -->
+    <nav class="loppo-breadcrumbs" aria-label="Breadcrumb" style="max-width:440px;margin:24px auto 0;">
+        <ol class="breadcrumb-list">
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Log In</li>
+        </ol>
+    </nav>
+
     <main class="login-container" role="main">
         <div class="login-header">
-            <h1 id="loginTitle">Welcome Back</h1>
+            <h1 id="loginTitle" class="page-main-heading">Welcome Back</h1>
             <p id="loginSubtitle">Log in to your account and join the community</p>
         </div>
 
@@ -68,7 +120,7 @@
         </div>
     </main>
 
-    <div class="loppo-toast-container" id="toastContainer" aria-live="polite"></div>
+    
 
     <script src="js/shared.js"></script>
     <script src="js/login.js"></script>

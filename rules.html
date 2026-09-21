@@ -3,86 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Rules - Loppo</title>
+    <title>Community Guidelines & Rules - Loppo</title>
+    <meta name="description" content="Read the Loppo community guidelines, code of conduct, and moderation policies to help maintain a safe, welcoming platform.">
+    
+    <!-- Canonical & Favicons -->
+    <link rel="canonical" href="https://loppo.com/rules">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Loppo">
+    <meta property="og:title" content="Community Guidelines & Rules - Loppo">
+    <meta property="og:description" content="Read the Loppo community guidelines, code of conduct, and moderation policies.">
+    <meta property="og:url" content="https://loppo.com/rules">
+    <meta property="og:image" content="https://loppo.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Community Guidelines & Rules - Loppo">
+    <meta name="twitter:description" content="Read the Loppo community guidelines, code of conduct, and moderation policies.">
+    <meta name="twitter:image" content="https://loppo.com/assets/og-image.png">
+
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://loppo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Community Rules",
+          "item": "https://loppo.com/rules"
+        }
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/rules.css">
+    <script src="js/theme.js"></script>
+    <script src="js/components/loppo-ui.js"></script>
 </head>
 <body>
 
-<nav>
-    <button class="hamburger"><span></span><span></span><span></span></button>
-    <div class="logo-container" onclick="location.href='index.html'"><h2 id="logo-text" style="margin:0;color:var(--primary-btn);">Loppo</h2></div>
-    <div class="search-container"><span class="search-icon"></span><input type="text" placeholder="Search..." onkeydown="performGlobalSearch(event)"></div>
-    <div class="nav-actions">
-        <button class="btn-lang" id="langBtn">العربية</button>
-        <div onclick="location.href='notifications.html'" style="cursor:pointer;font-size:1.2em;" title="Notifications"></div>
-        <button class="btn-primary" onclick="location.href='login.html'" id="loginBtn">Log In</button>
-        <div id="user-avatar" style="cursor:pointer;display:none;" onclick="location.href='profile.html'">
-            <img id="nav-avatar" src="" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
-        </div>
-    </div>
-</nav>
+<loppo-header></loppo-header>
 
-<div class="container">
-        <aside class="sidebar-loppo">
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('mainMenu')">
-                <span class="section-title">MAIN</span>
-                <span class="collapse-icon" id="mainMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="mainMenu">
-                <a href="index.html" class="sidebar-link">Home</a>
-                <a href="popular.html" class="sidebar-link">Popular</a>
-                <a href="news.html" class="sidebar-link">News</a>
-                <a href="explore.html" class="sidebar-link">Explore</a>
-            </div>
-        </div>
-
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('profileMenu')">
-                <span class="section-title">PROFILE</span>
-                <span class="collapse-icon" id="profileMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="profileMenu">
-                <a href="profile.html" class="sidebar-link">Profile</a>
-                <a href="chat.html" class="sidebar-link">Chat</a>
-                <a href="settings.html" class="sidebar-link">Settings</a>
-                <a href="friends.html" class="sidebar-link">Friends</a>
-            </div>
-        </div>
-
-        <div class="sidebar-section">
-            <div class="section-header" onclick="toggleSection('resourcesMenu')">
-                <span class="section-title">RESOURCES</span>
-                <span class="collapse-icon" id="resourcesMenuIcon">▼</span>
-            </div>
-            <div class="section-content" id="resourcesMenu">
-                <a href="about.html" class="sidebar-link">About</a>
-                <a href="blog.html" class="sidebar-link">Blog</a>
-                <a href="help.html" class="sidebar-link">Help</a>
-            </div>
-        </div>
-
-        <div class="sidebar-bottom">
-            <a href="rules.html" class="bottom-link">Community Rules</a>
-            <a href="privacy.html" class="bottom-link">Privacy Policy</a>
-            <a href="contact.html" class="bottom-link">Contact Us</a>
-        </div>
-
-        </aside>
+<div class="app-layout-container">
+        <loppo-sidebar></loppo-sidebar>
 
     <div class="main-feed">
+        <!-- Breadcrumbs -->
+        <nav class="loppo-breadcrumbs" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Rules</li>
+            </ol>
+        </nav>
+
         <div class="rules-container">
-            <h1 class="rules-title" id="rulesTitle">Community Rules</h1>
+            <h1 class="page-main-heading rules-title" id="rulesTitle">Community Rules</h1>
             
             <div class="rule-item"><span class="rule-number">1.</span> <span id="rule1">Be respectful to all members</span></div>
             <div class="rule-item"><span class="rule-number">2.</span> <span id="rule2">No hate speech, harassment, or bullying</span></div>
             <div class="rule-item"><span class="rule-number">3.</span> <span id="rule3">No spam or self-promotion without context</span></div>
             <div class="rule-item"><span class="rule-number">4.</span> <span id="rule4">Post relevant content to the appropriate categories</span></div>
             <div class="rule-item"><span class="rule-number">5.</span> <span id="rule5">No sharing of personal information</span></div>
-            <div class="rule-item"><span class="rule-number">6.</span> <span id="rule6">No NSFW or inappropriate content</span></div>
-            <div class="rule-item"><span class="rule-number">7.</span> <span id="rule7">Follow Reddiquette guidelines</span></div>
+            <div class="rule-item"><span class="rule-number">6.</span> <span id="rule6">Keep discussions constructive and respectful</span></div>
+            <div class="rule-item"><span class="rule-number">7.</span> <span id="rule7">Follow Loppo community civility guidelines</span></div>
             <div class="rule-item"><span class="rule-number">8.</span> <span id="rule8">Report violations to moderators</span></div>
         </div>
     </div>
@@ -91,7 +86,7 @@
         <h3 id="relatedTitle">Related Pages</h3>
         <ul class="sidebar-list">
             <li onclick="location.href='privacy.html'" id="privacyLink">Privacy Policy</li>
-            <li onclick="location.href='terms.html'" id="termsLink">Terms of Service</li>
+            <li onclick="location.href='user-agreement.html'" id="termsLink">User Agreement</li>
             <li onclick="location.href='contact.html'" id="contactLink">Contact Us</li>
         </ul>
     </div>

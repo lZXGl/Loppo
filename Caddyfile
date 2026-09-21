@@ -1,0 +1,29 @@
+# Production Caddy configuration for Loppo Custom Domain
+# Automatically issues and renews Let's Encrypt SSL/TLS certificates
+
+loppo.com, www.loppo.com {
+    # Redirect www to apex
+    @www header_regexp host Host ^www\.(.*)$
+    handle @www {
+        redir https://loppo.com{uri} permanent
+    }
+
+    # Security headers
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "SAMEORIGIN"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+
+    # Static file caching
+    @static path /css/* /js/* /assets/* *.ico *.svg *.png *.jpg *.jpeg *.webp *.woff2
+    header @static Cache-Control "public, max-age=604800, immutable"
+
+    # Reverse proxy to Loppo Node.js server
+    reverse_proxy 127.0.0.1:8787 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+}

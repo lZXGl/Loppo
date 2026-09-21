@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" id="app-root" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="The page you requested could not be found on Loppo. Explore trending discussions or search our community.">
+    <title>404 Page Not Found - Loppo</title>
+
+    <!-- Canonical & Favicons -->
+    <link rel="canonical" href="https://loppo.com/404">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <style>
+        .error-page-container {
+            max-width: 720px;
+            margin: 60px auto;
+            padding: 40px 24px;
+            text-align: center;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .error-code-badge {
+            display: inline-block;
+            font-size: 5rem;
+            font-weight: 900;
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+        .error-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 16px 0;
+        }
+        .error-description {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .error-search-box {
+            max-width: 460px;
+            margin: 0 auto 32px auto;
+            display: flex;
+            gap: 8px;
+        }
+        .error-search-box input {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-surface-alt);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .error-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .helpful-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-subtle);
+        }
+        .helpful-card {
+            padding: 14px;
+            border-radius: var(--radius-md);
+            background: var(--bg-surface-alt);
+            border: 1px solid var(--border-subtle);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .helpful-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .helpful-card span.icon {
+            font-size: 1.5rem;
+        }
+    </style>
+    <script src="js/components/loppo-ui.js"></script>
+    <script src="js/theme.js"></script>
+</head>
+<body>
+
+    <!-- Unified Header -->
+    <loppo-header></loppo-header>
+
+    <div class="app-layout-container">
+        <!-- Main Content Area -->
+        <main class="loppo-feed-main" role="main" style="max-width:900px;margin:0 auto;width:100%;">
+            <!-- Breadcrumbs -->
+            <nav class="loppo-breadcrumbs" aria-label="Breadcrumb">
+                <ol class="breadcrumb-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li aria-current="page">404 Not Found</li>
+                </ol>
+            </nav>
+
+            <div class="error-page-container">
+                <div class="error-code-badge" aria-hidden="true">404</div>
+                <h1 class="error-title">Page Not Found</h1>
+                <p class="error-description">
+                    The discussion, creator profile, or community page you are looking for doesn't exist, was moved, or has a typo in the URL.
+                </p>
+
+                <!-- Search Input on 404 -->
+                <form class="error-search-box" onsubmit="event.preventDefault(); const q = document.getElementById('search404Input').value.trim(); if(q) window.location.href='explore.html?q='+encodeURIComponent(q);">
+                    <input type="search" id="search404Input" placeholder="Search discussions, topics, news..." aria-label="Search site">
+                    <button type="submit" class="btn-pill btn-pill-primary">Search</button>
+                </form>
+
+                <div class="error-actions">
+                    <a href="index.html" class="btn-pill btn-pill-primary">🏠 Back to Home Feed</a>
+                    <a href="explore.html" class="btn-pill btn-pill-outline">🧭 Explore Communities</a>
+                    <a href="help.html" class="btn-pill btn-pill-outline">❓ Help Center</a>
+                </div>
+
+                <div class="helpful-links-grid">
+                    <a href="popular.html" class="helpful-card">
+                        <span class="icon" aria-hidden="true">🔥</span>
+                        <span>Popular Feed</span>
+                    </a>
+                    <a href="news.html" class="helpful-card">
+                        <span class="icon" aria-hidden="true">📰</span>
+                        <span>Tech News</span>
+                    </a>
+                    <a href="blog.html" class="helpful-card">
+                        <span class="icon" aria-hidden="true">✍️</span>
+                        <span>Official Blog</span>
+                    </a>
+                    <a href="contact.html" class="helpful-card">
+                        <span class="icon" aria-hidden="true">✉️</span>
+                        <span>Contact Us</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/shared.js"></script>
+</body>
+</html>
