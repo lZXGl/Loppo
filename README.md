@@ -6,7 +6,7 @@
 [![SQLite](https://img.shields.io/badge/SQLite-Fallback-blue.svg)](https://sqlite.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Loppo is a modern, lightweight **social discussion and community platform**. Engineered with a clean, decoupled architecture (Anti-Koshary), dual-mode database support (**Supabase PostgreSQL** with local SQLite fallback), native browser **Web Components** for zero-build DRY frontend layouts, and an accessible, responsive design system.
+Loppo is a modern, lightweight **social discussion and community platform**. Engineered with a clean, decoupled architecture, dual-mode database support (**Supabase PostgreSQL** with local SQLite fallback), native browser **Web Components** for zero-build DRY frontend layouts, and an accessible, responsive design system.
 
 <p align="center">
   <img src="assets/screenshots/loppo-dark-8787.png" alt="Loppo Dark Mode UI" width="49%">
@@ -20,7 +20,7 @@ Loppo is a modern, lightweight **social discussion and community platform**. Eng
 - **🔐 Dual-Mode Auth & Storage**:
   - **Supabase Cloud**: Connects to Supabase PostgreSQL with complete Row-Level Security (RLS) policies.
   - **Zero-Setup Offline Fallback**: Automatically falls back to local SQLite when running without cloud credentials, allowing anyone to clone and test immediately.
-- **🧱 Anti-Koshary Modular Backend**:
+- **🧱 Decoupled Modular Backend**:
   - Cleanly decoupled architectural layers: `src/config/`, `src/db/`, `src/routes/`, `src/middleware/`.
   - Lean `<100` line server entry point (`server.js`).
 - **⚡ Native Web Components Frontend**:
@@ -70,7 +70,7 @@ loppo/
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone https://github.com/your-username/loppo.git
+git clone https://github.com/lZXGl/loppo.git
 cd loppo
 npm install
 ```
