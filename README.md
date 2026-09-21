@@ -70,7 +70,7 @@ loppo/
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone https://github.com/lZXGl/loppo.git
+git clone https://github.com/lZXGl/Loppo.git
 cd loppo
 npm install
 ```
