@@ -5,3 +5,4 @@ pm2.log
 *.log
 .next/
 *.png.bak
+graphify-out/
