@@ -1,12 +1,19 @@
 # 🌐 Loppo - Modern Social Discussion & Community Platform
 
-[![Node.js](https://img.shields.io/badge/Node.js-22.x-green.svg)](https://nodejs.org)
-[![Express](https://img.shields.io/badge/Express-5.x-black.svg)](https://expressjs.com)
-[![Supabase](https://img.shields.io/badge/Supabase-Ready-3ECF8E.svg)](https://supabase.com)
-[![SQLite](https://img.shields.io/badge/SQLite-Fallback-blue.svg)](https://sqlite.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<p align="center">
+  <img src="assets/launch_preview.gif" alt="Loppo Launch Trailer Preview" width="100%">
+</p>
 
-Loppo is a modern, lightweight **social discussion and community platform**. Engineered with a clean, decoupled architecture, dual-mode database support (**Supabase PostgreSQL** with local SQLite fallback), native browser **Web Components** for zero-build DRY frontend layouts, and an accessible, responsive design system.
+<p align="center">
+  <img src="https://img.shields.io/badge/🎬_Launch_Trailer-1080p_HD-6366f1?style=for-the-badge" alt="Launch Trailer">
+  <img src="https://img.shields.io/badge/Node.js-22.x-22c55e?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/Express-5.x-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express">
+  <img src="https://img.shields.io/badge/Supabase-Ready-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
+  <img src="https://img.shields.io/badge/SQLite-Fallback-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License">
+</p>
+
+Loppo is a modern, lightweight **social discussion and community platform**. Engineered with a clean, decoupled architecture, dual-mode database support (**Supabase PostgreSQL** with local SQLite fallback), native browser **Web Components** for zero-build DRY frontend layouts, and an accessible, responsive dual-theme design system (Obsidian Slate Dark & Crisp Paper Light).
 
 <p align="center">
   <img src="assets/screenshots/loppo-dark-8787.png" alt="Loppo Dark Mode UI" width="49%">

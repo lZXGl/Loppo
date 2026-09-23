@@ -6,3 +6,4 @@ pm2.log
 .next/
 *.png.bak
 graphify-out/
+brag-output/
